@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // WTF
+    // WHY YOU NOT WORKING
 }
 
 - (void)didReceiveMemoryWarning {
