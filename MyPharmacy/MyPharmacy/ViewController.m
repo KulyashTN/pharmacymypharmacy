@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // WTF
-    // WHY YOU NOT WORKING
+    // WHY YOU NOT WORKING tamerlan?!
 }
 
 - (void)didReceiveMemoryWarning {
