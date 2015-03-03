@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1845D7071AA4C960004D11FB /* AddTablet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1845D7061AA4C960004D11FB /* AddTablet.m */; };
 		321912251A9C79BE002DA0C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 321912241A9C79BE002DA0C3 /* main.m */; };
 		321912281A9C79BE002DA0C3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 321912271A9C79BE002DA0C3 /* AppDelegate.m */; };
 		3219122B1A9C79BE002DA0C3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3219122A1A9C79BE002DA0C3 /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1845D7051AA4C960004D11FB /* AddTablet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTablet.h; sourceTree = "<group>"; };
+		1845D7061AA4C960004D11FB /* AddTablet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTablet.m; sourceTree = "<group>"; };
 		3219121F1A9C79BE002DA0C3 /* MyPharmacy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPharmacy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		321912231A9C79BE002DA0C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		321912241A9C79BE002DA0C3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 				321912271A9C79BE002DA0C3 /* AppDelegate.m */,
 				321912291A9C79BE002DA0C3 /* ViewController.h */,
 				3219122A1A9C79BE002DA0C3 /* ViewController.m */,
+				1845D7051AA4C960004D11FB /* AddTablet.h */,
+				1845D7061AA4C960004D11FB /* AddTablet.m */,
 				3219122C1A9C79BE002DA0C3 /* Main.storyboard */,
 				3219122F1A9C79BE002DA0C3 /* Images.xcassets */,
 				321912311A9C79BE002DA0C3 /* LaunchScreen.xib */,
@@ -222,6 +227,7 @@
 				3219122B1A9C79BE002DA0C3 /* ViewController.m in Sources */,
 				321912281A9C79BE002DA0C3 /* AppDelegate.m in Sources */,
 				321912251A9C79BE002DA0C3 /* main.m in Sources */,
+				1845D7071AA4C960004D11FB /* AddTablet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +420,7 @@
 				321912441A9C79BE002DA0C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		321912451A9C79BE002DA0C3 /* Build configuration list for PBXNativeTarget "MyPharmacyTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +429,7 @@
 				321912471A9C79BE002DA0C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

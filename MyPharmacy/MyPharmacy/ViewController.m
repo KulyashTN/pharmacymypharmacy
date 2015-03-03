@@ -16,13 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // WTF
-    // WHY YOU NOT WORKING tamerlan?!
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 @end
