@@ -23,7 +23,6 @@
 		B740C5F21ACA589F00B46137 /* Tablets.m in Sources */ = {isa = PBXBuildFile; fileRef = B740C5F11ACA589F00B46137 /* Tablets.m */; };
 		B740C5F41ACA643600B46137 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = B740C5F31ACA643600B46137 /* 1.png */; };
 		B740C5F71ACA6A0D00B46137 /* NewTablet.m in Sources */ = {isa = PBXBuildFile; fileRef = B740C5F61ACA6A0D00B46137 /* NewTablet.m */; };
->>>>>>> origin/master
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +67,6 @@
 		B740C5F31ACA643600B46137 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		B740C5F51ACA6A0D00B46137 /* NewTablet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTablet.h; sourceTree = "<group>"; };
 		B740C5F61ACA6A0D00B46137 /* NewTablet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTablet.m; sourceTree = "<group>"; };
->>>>>>> origin/master
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +125,7 @@
 				4E97A4301ACA9E7400FC9366 /* MenuViewController.m */,
 				4E97A4241ACA9D9E00FC9366 /* MFSideMenu */,
 				B740C5F31ACA643600B46137 /* 1.png */,
->>>>>>> origin/master
+
 				3219122F1A9C79BE002DA0C3 /* Images.xcassets */,
 				321912311A9C79BE002DA0C3 /* LaunchScreen.xib */,
 				321912221A9C79BE002DA0C3 /* Supporting Files */,
@@ -288,7 +286,7 @@
 				4E97A42C1ACA9D9E00FC9366 /* MFSideMenuContainerViewController.m in Sources */,
 				4E97A4341ACA9ECB00FC9366 /* ViewCell1.m in Sources */,
 				4E97A42E1ACA9D9E00FC9366 /* UIViewController+MFSideMenuAdditions.m in Sources */,
->>>>>>> origin/master
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
