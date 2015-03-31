@@ -10,10 +10,10 @@
 		321912251A9C79BE002DA0C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 321912241A9C79BE002DA0C3 /* main.m */; };
 		321912281A9C79BE002DA0C3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 321912271A9C79BE002DA0C3 /* AppDelegate.m */; };
 		3219122B1A9C79BE002DA0C3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3219122A1A9C79BE002DA0C3 /* ViewController.m */; };
-		3219122E1A9C79BE002DA0C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3219122C1A9C79BE002DA0C3 /* Main.storyboard */; };
 		321912301A9C79BE002DA0C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3219122F1A9C79BE002DA0C3 /* Images.xcassets */; };
 		321912331A9C79BE002DA0C3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 321912311A9C79BE002DA0C3 /* LaunchScreen.xib */; };
 		3219123F1A9C79BE002DA0C3 /* MyPharmacyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3219123E1A9C79BE002DA0C3 /* MyPharmacyTests.m */; };
+		4E21D6501ACB21910007A9DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E21D64E1ACB21910007A9DB /* Main.storyboard */; };
 		4E97A42C1ACA9D9E00FC9366 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97A4271ACA9D9E00FC9366 /* MFSideMenuContainerViewController.m */; };
 		4E97A42D1ACA9D9E00FC9366 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97A4291ACA9D9E00FC9366 /* MFSideMenuShadow.m */; };
 		4E97A42E1ACA9D9E00FC9366 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97A42B1ACA9D9E00FC9366 /* UIViewController+MFSideMenuAdditions.m */; };
@@ -43,12 +43,12 @@
 		321912271A9C79BE002DA0C3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		321912291A9C79BE002DA0C3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3219122A1A9C79BE002DA0C3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		3219122D1A9C79BE002DA0C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3219122F1A9C79BE002DA0C3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		321912321A9C79BE002DA0C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		321912381A9C79BE002DA0C3 /* MyPharmacyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPharmacyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3219123D1A9C79BE002DA0C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3219123E1A9C79BE002DA0C3 /* MyPharmacyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPharmacyTests.m; sourceTree = "<group>"; };
+		4E21D64F1ACB21910007A9DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MyPharmacy/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E97A4251ACA9D9E00FC9366 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
 		4E97A4261ACA9D9E00FC9366 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuContainerViewController.h; sourceTree = "<group>"; };
 		4E97A4271ACA9D9E00FC9366 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuContainerViewController.m; sourceTree = "<group>"; };
@@ -90,6 +90,7 @@
 		321912161A9C79BE002DA0C3 = {
 			isa = PBXGroup;
 			children = (
+				4E21D64E1ACB21910007A9DB /* Main.storyboard */,
 				321912211A9C79BE002DA0C3 /* MyPharmacy */,
 				3219123B1A9C79BE002DA0C3 /* MyPharmacyTests */,
 				321912201A9C79BE002DA0C3 /* Products */,
@@ -118,14 +119,12 @@
 				B740C5EE1ACA582A00B46137 /* AddTabletViewController.m */,
 				B740C5F01ACA589F00B46137 /* Tablets.h */,
 				B740C5F11ACA589F00B46137 /* Tablets.m */,
-				3219122C1A9C79BE002DA0C3 /* Main.storyboard */,
 				4E97A4321ACA9ECB00FC9366 /* ViewCell1.h */,
 				4E97A4331ACA9ECB00FC9366 /* ViewCell1.m */,
 				4E97A42F1ACA9E7400FC9366 /* MenuViewController.h */,
 				4E97A4301ACA9E7400FC9366 /* MenuViewController.m */,
 				4E97A4241ACA9D9E00FC9366 /* MFSideMenu */,
 				B740C5F31ACA643600B46137 /* 1.png */,
-
 				3219122F1A9C79BE002DA0C3 /* Images.xcassets */,
 				321912311A9C79BE002DA0C3 /* LaunchScreen.xib */,
 				321912221A9C79BE002DA0C3 /* Supporting Files */,
@@ -253,10 +252,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3219122E1A9C79BE002DA0C3 /* Main.storyboard in Resources */,
 				B740C5F41ACA643600B46137 /* 1.png in Resources */,
 				321912331A9C79BE002DA0C3 /* LaunchScreen.xib in Resources */,
 				321912301A9C79BE002DA0C3 /* Images.xcassets in Resources */,
+				4E21D6501ACB21910007A9DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,12 +280,10 @@
 				B740C5F71ACA6A0D00B46137 /* NewTablet.m in Sources */,
 				321912251A9C79BE002DA0C3 /* main.m in Sources */,
 				4E97A4311ACA9E7400FC9366 /* MenuViewController.m in Sources */,
-				1845D7071AA4C960004D11FB /* AddTablet.m in Sources */,
 				4E97A42D1ACA9D9E00FC9366 /* MFSideMenuShadow.m in Sources */,
 				4E97A42C1ACA9D9E00FC9366 /* MFSideMenuContainerViewController.m in Sources */,
 				4E97A4341ACA9ECB00FC9366 /* ViewCell1.m in Sources */,
 				4E97A42E1ACA9D9E00FC9366 /* UIViewController+MFSideMenuAdditions.m in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,20 +306,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3219122C1A9C79BE002DA0C3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3219122D1A9C79BE002DA0C3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		321912311A9C79BE002DA0C3 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				321912321A9C79BE002DA0C3 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		4E21D64E1ACB21910007A9DB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E21D64F1ACB21910007A9DB /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
