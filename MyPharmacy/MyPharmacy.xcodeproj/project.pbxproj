@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1845D7071AA4C960004D11FB /* AddTablet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1845D7061AA4C960004D11FB /* AddTablet.m */; };
 		321912251A9C79BE002DA0C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 321912241A9C79BE002DA0C3 /* main.m */; };
 		321912281A9C79BE002DA0C3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 321912271A9C79BE002DA0C3 /* AppDelegate.m */; };
 		3219122B1A9C79BE002DA0C3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3219122A1A9C79BE002DA0C3 /* ViewController.m */; };
@@ -20,6 +19,11 @@
 		4E97A42E1ACA9D9E00FC9366 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97A42B1ACA9D9E00FC9366 /* UIViewController+MFSideMenuAdditions.m */; };
 		4E97A4311ACA9E7400FC9366 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97A4301ACA9E7400FC9366 /* MenuViewController.m */; };
 		4E97A4341ACA9ECB00FC9366 /* ViewCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97A4331ACA9ECB00FC9366 /* ViewCell1.m */; };
+		B740C5EF1ACA582A00B46137 /* AddTabletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B740C5EE1ACA582A00B46137 /* AddTabletViewController.m */; };
+		B740C5F21ACA589F00B46137 /* Tablets.m in Sources */ = {isa = PBXBuildFile; fileRef = B740C5F11ACA589F00B46137 /* Tablets.m */; };
+		B740C5F41ACA643600B46137 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = B740C5F31ACA643600B46137 /* 1.png */; };
+		B740C5F71ACA6A0D00B46137 /* NewTablet.m in Sources */ = {isa = PBXBuildFile; fileRef = B740C5F61ACA6A0D00B46137 /* NewTablet.m */; };
+>>>>>>> origin/master
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,8 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1845D7051AA4C960004D11FB /* AddTablet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTablet.h; sourceTree = "<group>"; };
-		1845D7061AA4C960004D11FB /* AddTablet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTablet.m; sourceTree = "<group>"; };
 		3219121F1A9C79BE002DA0C3 /* MyPharmacy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPharmacy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		321912231A9C79BE002DA0C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		321912241A9C79BE002DA0C3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -59,6 +61,14 @@
 		4E97A4301ACA9E7400FC9366 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		4E97A4321ACA9ECB00FC9366 /* ViewCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCell1.h; sourceTree = "<group>"; };
 		4E97A4331ACA9ECB00FC9366 /* ViewCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCell1.m; sourceTree = "<group>"; };
+		B740C5ED1ACA582900B46137 /* AddTabletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTabletViewController.h; sourceTree = "<group>"; };
+		B740C5EE1ACA582A00B46137 /* AddTabletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTabletViewController.m; sourceTree = "<group>"; };
+		B740C5F01ACA589F00B46137 /* Tablets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tablets.h; sourceTree = "<group>"; };
+		B740C5F11ACA589F00B46137 /* Tablets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tablets.m; sourceTree = "<group>"; };
+		B740C5F31ACA643600B46137 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		B740C5F51ACA6A0D00B46137 /* NewTablet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTablet.h; sourceTree = "<group>"; };
+		B740C5F61ACA6A0D00B46137 /* NewTablet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTablet.m; sourceTree = "<group>"; };
+>>>>>>> origin/master
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +113,21 @@
 				321912261A9C79BE002DA0C3 /* AppDelegate.h */,
 				321912271A9C79BE002DA0C3 /* AppDelegate.m */,
 				321912291A9C79BE002DA0C3 /* ViewController.h */,
+				B740C5F51ACA6A0D00B46137 /* NewTablet.h */,
+				B740C5F61ACA6A0D00B46137 /* NewTablet.m */,
 				3219122A1A9C79BE002DA0C3 /* ViewController.m */,
-				1845D7051AA4C960004D11FB /* AddTablet.h */,
-				1845D7061AA4C960004D11FB /* AddTablet.m */,
+				B740C5ED1ACA582900B46137 /* AddTabletViewController.h */,
+				B740C5EE1ACA582A00B46137 /* AddTabletViewController.m */,
+				B740C5F01ACA589F00B46137 /* Tablets.h */,
+				B740C5F11ACA589F00B46137 /* Tablets.m */,
 				3219122C1A9C79BE002DA0C3 /* Main.storyboard */,
 				4E97A4321ACA9ECB00FC9366 /* ViewCell1.h */,
 				4E97A4331ACA9ECB00FC9366 /* ViewCell1.m */,
 				4E97A42F1ACA9E7400FC9366 /* MenuViewController.h */,
 				4E97A4301ACA9E7400FC9366 /* MenuViewController.m */,
 				4E97A4241ACA9D9E00FC9366 /* MFSideMenu */,
+				B740C5F31ACA643600B46137 /* 1.png */,
+>>>>>>> origin/master
 				3219122F1A9C79BE002DA0C3 /* Images.xcassets */,
 				321912311A9C79BE002DA0C3 /* LaunchScreen.xib */,
 				321912221A9C79BE002DA0C3 /* Supporting Files */,
@@ -240,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3219122E1A9C79BE002DA0C3 /* Main.storyboard in Resources */,
+				B740C5F41ACA643600B46137 /* 1.png in Resources */,
 				321912331A9C79BE002DA0C3 /* LaunchScreen.xib in Resources */,
 				321912301A9C79BE002DA0C3 /* Images.xcassets in Resources */,
 			);
@@ -259,8 +276,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B740C5EF1ACA582A00B46137 /* AddTabletViewController.m in Sources */,
+				B740C5F21ACA589F00B46137 /* Tablets.m in Sources */,
 				3219122B1A9C79BE002DA0C3 /* ViewController.m in Sources */,
 				321912281A9C79BE002DA0C3 /* AppDelegate.m in Sources */,
+				B740C5F71ACA6A0D00B46137 /* NewTablet.m in Sources */,
 				321912251A9C79BE002DA0C3 /* main.m in Sources */,
 				4E97A4311ACA9E7400FC9366 /* MenuViewController.m in Sources */,
 				1845D7071AA4C960004D11FB /* AddTablet.m in Sources */,
@@ -268,6 +288,7 @@
 				4E97A42C1ACA9D9E00FC9366 /* MFSideMenuContainerViewController.m in Sources */,
 				4E97A4341ACA9ECB00FC9366 /* ViewCell1.m in Sources */,
 				4E97A42E1ACA9D9E00FC9366 /* UIViewController+MFSideMenuAdditions.m in Sources */,
+>>>>>>> origin/master
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
