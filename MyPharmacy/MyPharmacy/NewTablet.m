@@ -9,11 +9,9 @@
 #import "NewTablet.h"
 
 @interface NewTablet (){
-    NSArray *hour;
-    NSMutableArray *minute, *week;
+    NSMutableArray *week;
     NSMutableDictionary *arrayOfData;
     int k;
-    NSString* h, *m;
     
 }
 @end
@@ -23,21 +21,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     k=0;
-    hour = [[NSArray alloc] initWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"00", nil];
-    
-    minute = [NSMutableArray new];
+
     week = [NSMutableArray new];
     arrayOfData = [NSMutableDictionary new];
     for(int i=0;i<7;i++){
         [week addObject:@"1"];
     }
-    for(int i=0;i<6;i++){
-        for(int j=0;j<10;j++)
-        [minute addObject:[NSString stringWithFormat:@"%d%d",i,j]];
-    }
-    
-    self.TimePicker.delegate = self;
-    self.TimePicker.dataSource = self;
     
     
     if([self.RepeatSwitch isOn]){
@@ -50,51 +39,11 @@
     
 }
 
-// The number of columns of data
-- (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 2;
-}
-
-// The number of rows of data
-- (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    if (component==0) {
-        return 24;
-    }
-    else
-        return 60;
-}
-
-// The data to return for the row and component (column) that's being passed in
-- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    if(component==0){
-        return hour[row];
-    }
-    else
-        return minute[row];
-}
-
-- (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    
-    if(component==0){
-        h=hour[row];
-    }
-    else if(component==1){
-        m=minute[row];
-    }
-    [arrayOfData setObject:[NSString stringWithFormat:@"%@:%@",h,m] forKey:@"time"];
-   // NSLog(@"time = %@", [arrayOfData objectForKey:@"time"]);
-
-}
-
 
 - (IBAction)SwichRepeat:(UISwitch *)sender {
     if([sender isOn]){
         [UIView animateWithDuration:0.5 animations:^(void){
-        [self.ViewWithButtons setHidden:NO];
+        [self.ViewWithButtons setAlpha:1.0];
         [self.FoodControl.layer setFrame:CGRectMake(16, 418, 288, 29)];
         }];
         
@@ -103,7 +52,7 @@
         
         
         [UIView animateWithDuration:0.5 animations:^(void){
-            [self.ViewWithButtons setHidden:YES];
+            [self.ViewWithButtons setAlpha:0.0];
             [self.FoodControl.layer setFrame:CGRectMake(16, 366, 288, 29)];
         }];
 
@@ -127,11 +76,15 @@
 
 - (IBAction)SaveOrCancelButton:(UIButton *)sender {
     if(sender.tag==0){
+        NSTimeInterval secondsInSixHours =  6 * 60 * 60;
+        [arrayOfData setObject:[self.TimePicker.date dateByAddingTimeInterval:secondsInSixHours] forKey:@"date"];
+         NSLog(@"date = %@", [arrayOfData objectForKey:@"date"]);
+        
         [arrayOfData setObject:[NSString stringWithFormat:@"%@",self.Name.text] forKey:@"name"];
-        NSLog(@"name = %@", [arrayOfData objectForKey:@"name"]);
+        //NSLog(@"name = %@", [arrayOfData objectForKey:@"name"]);
         
         [arrayOfData setObject:[NSString stringWithFormat:@"%@",self.Notes.text] forKey:@"notes"];
-        NSLog(@"notes = %@", [arrayOfData objectForKey:@"notes"]);
+        //NSLog(@"notes = %@", [arrayOfData objectForKey:@"notes"]);
         
         if(![self.RepeatSwitch isOn]){
             for(int i=0;i<7;i++){
@@ -139,15 +92,21 @@
             }
         }
         [arrayOfData setObject:week forKey:@"weekArray"];
-        NSLog(@"week = %@", [arrayOfData objectForKey:@"week"]);
+        //NSLog(@"week = %@", [arrayOfData objectForKey:@"weekArray"]);
         
         if(self.FoodControl.selectedSegmentIndex==0) [arrayOfData setObject:@"with food" forKey:@"food"];
         else [arrayOfData setObject:@"without food" forKey:@"food"];
-        NSLog(@"food = %@", [arrayOfData objectForKey:@"food"]);
+        //NSLog(@"food = %@", [arrayOfData objectForKey:@"food"]);
         
-        NSMutableArray* arrayOfAlarmTablet = [[NSMutableArray alloc]initWithObjects:arrayOfData, nil];
+        NSMutableArray* arrayOfAlarmTablets = [[NSMutableArray alloc]initWithObjects:arrayOfData, nil];
+        NSMutableDictionary* d = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AlarmTabletArray"] mutableCopy];
+        if(![d isEqual:nil]){
+            for(int i=0;i<[NSUserDefaults standardUserDefaults])
+        }
         
         [[NSUserDefaults standardUserDefaults] setObject:arrayOfData forKey:@"AlarmTabletArray"];
+    
     }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

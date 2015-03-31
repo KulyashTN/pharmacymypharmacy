@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 
-@interface NewTablet : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
-@property (weak, nonatomic) IBOutlet
-UIPickerView *TimePicker;
+@interface NewTablet : UIViewController 
+
+@property (weak, nonatomic) IBOutlet UIDatePicker *TimePicker;
 @property (weak, nonatomic) IBOutlet UITextField *Name;
 @property (weak, nonatomic) IBOutlet UITextField *Notes;
 @property (weak, nonatomic) IBOutlet UISwitch *RepeatSwitch;
