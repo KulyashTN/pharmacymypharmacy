@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UxQ-5q-LS5">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="skF-gW-LbL">
+>>>>>>> origin/master
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -87,14 +91,22 @@
                                 </state>
                             </button>
                         </subviews>
+<<<<<<< HEAD
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+=======
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+>>>>>>> origin/master
                     </view>
                     <navigationItem key="navigationItem" id="K4P-1C-z33"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="316" y="-443"/>
+<<<<<<< HEAD
+            <point key="canvasLocation" x="248" y="-443"/>
+=======
+            <point key="canvasLocation" x="456" y="256"/>
+>>>>>>> origin/master
         </scene>
         <!--Add tablet-->
         <scene sceneID="Ych-dD-pLF">
@@ -149,7 +161,84 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z2K-bq-6zX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="839" y="-443"/>
+<<<<<<< HEAD
+            <point key="canvasLocation" x="936" y="-749"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="c7X-DG-Aax">
+            <objects>
+                <viewController storyboardIdentifier="leftSideMenuViewController" id="VcY-jy-t3v" customClass="MenuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b6D-sg-6Su"/>
+                        <viewControllerLayoutGuide type="bottom" id="hfN-YQ-8rl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P25-tl-EG2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Lzh-EK-Pac" userLabel="Table View">
+                                <rect key="frame" x="0.0" y="46" width="600" height="620"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.64421559340000001" green="0.1253013979" blue="0.19629484180000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="E7M-hY-Drg" customClass="ViewCell1">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E7M-hY-Drg" id="r7w-3O-I8W">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnP-CK-Dv7">
+                                                    <rect key="frame" x="17" y="8" width="31" height="28"/>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="24"/>
+                                                    <color key="textColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USs-bV-vIs">
+                                                    <rect key="frame" x="61" y="8" width="259" height="28"/>
+                                                    <fontDescription key="fontDescription" name="Play" family="Play" pointSize="17"/>
+                                                    <color key="textColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9fN-QS-Mey">
+                                                    <rect key="frame" x="195" y="12" width="65" height="20"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.0078431372550000003" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="iconCell" destination="ZnP-CK-Dv7" id="Uic-mO-h7V"/>
+                                            <outlet property="imageCell" destination="9fN-QS-Mey" id="Put-MD-TaY"/>
+                                            <outlet property="nameCell" destination="USs-bV-vIs" id="p9a-pp-W4m"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2jz-GT-2aS">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Меню" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83B-ti-6s4">
+                                        <rect key="frame" x="17" y="4" width="88" height="37"/>
+                                        <fontDescription key="fontDescription" name="Play" family="Play" pointSize="29"/>
+                                        <color key="textColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.21176470589999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="headerView" destination="2jz-GT-2aS" id="IPJ-bQ-cgz"/>
+                        <outlet property="tableView1" destination="Lzh-EK-Pac" id="mkJ-Qh-Nu5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sAm-E7-rVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-455" y="-1230"/>
+=======
+            <point key="canvasLocation" x="903" y="225"/>
         </scene>
         <!--New Tablet-->
         <scene sceneID="UKt-83-Fdp">
@@ -358,81 +447,8 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1R7-9R-3kf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1280" y="-443"/>
-        </scene>
-        <!--Menu View Controller-->
-        <scene sceneID="a2v-xa-eZM">
-            <objects>
-                <viewController storyboardIdentifier="leftSideMenuViewController" id="ftY-cX-yZH" customClass="MenuViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="B56-IP-RsP"/>
-                        <viewControllerLayoutGuide type="bottom" id="yGO-W6-N8k"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tnn-o8-IMC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="EVZ-Wg-PGf" userLabel="Table View">
-                                <rect key="frame" x="0.0" y="46" width="600" height="620"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" red="0.64421559340000001" green="0.1253013979" blue="0.19629484180000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="I5B-yW-1EY" customClass="ViewCell1">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I5B-yW-1EY" id="tuD-DB-Y6H">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29v-Tb-CJY">
-                                                    <rect key="frame" x="17" y="8" width="31" height="28"/>
-                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="24"/>
-                                                    <color key="textColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfb-Go-UgU">
-                                                    <rect key="frame" x="61" y="8" width="259" height="28"/>
-                                                    <fontDescription key="fontDescription" name="Play" family="Play" pointSize="17"/>
-                                                    <color key="textColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yqy-6T-psy">
-                                                    <rect key="frame" x="195" y="12" width="65" height="20"/>
-                                                </imageView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0078431372550000003" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="iconCell" destination="29v-Tb-CJY" id="2jK-sW-Kma"/>
-                                            <outlet property="imageCell" destination="Yqy-6T-psy" id="3UY-30-KU6"/>
-                                            <outlet property="nameCell" destination="Sfb-Go-UgU" id="CNa-dK-nG3"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ErV-gA-oY6">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Меню" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idk-Rp-huJ">
-                                        <rect key="frame" x="17" y="4" width="88" height="37"/>
-                                        <fontDescription key="fontDescription" name="Play" family="Play" pointSize="29"/>
-                                        <color key="textColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.21176470589999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <connections>
-                        <outlet property="headerView" destination="ErV-gA-oY6" id="j1j-7V-WmG"/>
-                        <outlet property="tableView1" destination="EVZ-Wg-PGf" id="hyN-DY-auu"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hsF-Aa-lhr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-655" y="-1298"/>
+            <point key="canvasLocation" x="1272" y="239"/>
+>>>>>>> origin/master
         </scene>
     </scenes>
     <resources>
