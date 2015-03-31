@@ -15,6 +15,11 @@
 		321912301A9C79BE002DA0C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3219122F1A9C79BE002DA0C3 /* Images.xcassets */; };
 		321912331A9C79BE002DA0C3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 321912311A9C79BE002DA0C3 /* LaunchScreen.xib */; };
 		3219123F1A9C79BE002DA0C3 /* MyPharmacyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3219123E1A9C79BE002DA0C3 /* MyPharmacyTests.m */; };
+		4E97A42C1ACA9D9E00FC9366 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97A4271ACA9D9E00FC9366 /* MFSideMenuContainerViewController.m */; };
+		4E97A42D1ACA9D9E00FC9366 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97A4291ACA9D9E00FC9366 /* MFSideMenuShadow.m */; };
+		4E97A42E1ACA9D9E00FC9366 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97A42B1ACA9D9E00FC9366 /* UIViewController+MFSideMenuAdditions.m */; };
+		4E97A4311ACA9E7400FC9366 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97A4301ACA9E7400FC9366 /* MenuViewController.m */; };
+		4E97A4341ACA9ECB00FC9366 /* ViewCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97A4331ACA9ECB00FC9366 /* ViewCell1.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +48,17 @@
 		321912381A9C79BE002DA0C3 /* MyPharmacyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPharmacyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3219123D1A9C79BE002DA0C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3219123E1A9C79BE002DA0C3 /* MyPharmacyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPharmacyTests.m; sourceTree = "<group>"; };
+		4E97A4251ACA9D9E00FC9366 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
+		4E97A4261ACA9D9E00FC9366 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuContainerViewController.h; sourceTree = "<group>"; };
+		4E97A4271ACA9D9E00FC9366 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuContainerViewController.m; sourceTree = "<group>"; };
+		4E97A4281ACA9D9E00FC9366 /* MFSideMenuShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuShadow.h; sourceTree = "<group>"; };
+		4E97A4291ACA9D9E00FC9366 /* MFSideMenuShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuShadow.m; sourceTree = "<group>"; };
+		4E97A42A1ACA9D9E00FC9366 /* UIViewController+MFSideMenuAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MFSideMenuAdditions.h"; sourceTree = "<group>"; };
+		4E97A42B1ACA9D9E00FC9366 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MFSideMenuAdditions.m"; sourceTree = "<group>"; };
+		4E97A42F1ACA9E7400FC9366 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		4E97A4301ACA9E7400FC9366 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		4E97A4321ACA9ECB00FC9366 /* ViewCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCell1.h; sourceTree = "<group>"; };
+		4E97A4331ACA9ECB00FC9366 /* ViewCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCell1.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +107,11 @@
 				1845D7051AA4C960004D11FB /* AddTablet.h */,
 				1845D7061AA4C960004D11FB /* AddTablet.m */,
 				3219122C1A9C79BE002DA0C3 /* Main.storyboard */,
+				4E97A4321ACA9ECB00FC9366 /* ViewCell1.h */,
+				4E97A4331ACA9ECB00FC9366 /* ViewCell1.m */,
+				4E97A42F1ACA9E7400FC9366 /* MenuViewController.h */,
+				4E97A4301ACA9E7400FC9366 /* MenuViewController.m */,
+				4E97A4241ACA9D9E00FC9366 /* MFSideMenu */,
 				3219122F1A9C79BE002DA0C3 /* Images.xcassets */,
 				321912311A9C79BE002DA0C3 /* LaunchScreen.xib */,
 				321912221A9C79BE002DA0C3 /* Supporting Files */,
@@ -122,6 +143,20 @@
 				3219123D1A9C79BE002DA0C3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4E97A4241ACA9D9E00FC9366 /* MFSideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				4E97A4251ACA9D9E00FC9366 /* MFSideMenu.h */,
+				4E97A4261ACA9D9E00FC9366 /* MFSideMenuContainerViewController.h */,
+				4E97A4271ACA9D9E00FC9366 /* MFSideMenuContainerViewController.m */,
+				4E97A4281ACA9D9E00FC9366 /* MFSideMenuShadow.h */,
+				4E97A4291ACA9D9E00FC9366 /* MFSideMenuShadow.m */,
+				4E97A42A1ACA9D9E00FC9366 /* UIViewController+MFSideMenuAdditions.h */,
+				4E97A42B1ACA9D9E00FC9366 /* UIViewController+MFSideMenuAdditions.m */,
+			);
+			path = MFSideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,7 +262,12 @@
 				3219122B1A9C79BE002DA0C3 /* ViewController.m in Sources */,
 				321912281A9C79BE002DA0C3 /* AppDelegate.m in Sources */,
 				321912251A9C79BE002DA0C3 /* main.m in Sources */,
+				4E97A4311ACA9E7400FC9366 /* MenuViewController.m in Sources */,
 				1845D7071AA4C960004D11FB /* AddTablet.m in Sources */,
+				4E97A42D1ACA9D9E00FC9366 /* MFSideMenuShadow.m in Sources */,
+				4E97A42C1ACA9D9E00FC9366 /* MFSideMenuContainerViewController.m in Sources */,
+				4E97A4341ACA9ECB00FC9366 /* ViewCell1.m in Sources */,
+				4E97A42E1ACA9D9E00FC9366 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
