@@ -8,6 +8,7 @@
 
 #import "AddTabletViewController.h"
 #import "Tablets.h"
+#import "MFSideMenu.h"
 #import "NewTablet.h"
 
 @interface AddTabletViewController ()<UITableViewDelegate,UITableViewDataSource>{
@@ -49,6 +50,9 @@
 
 }
 
+- (IBAction)showLeftMenuPressed:(id)sender {
+    [self.menuContainerViewController toggleLeftSideMenuCompletion:nil];
+}
 
 #pragma mark - tableView methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

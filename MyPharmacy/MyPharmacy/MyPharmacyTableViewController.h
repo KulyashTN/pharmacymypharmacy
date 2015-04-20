@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyPharmacyTableViewController : UITableViewController <UIAlertViewDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface MyPharmacyTableViewController : UIViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSArray * tablets;
-
+@property (weak, nonatomic) IBOutlet UITableView *TabletsTableView;
+@property (weak, nonatomic) IBOutlet UILabel *NoTabletLabel;
 @end

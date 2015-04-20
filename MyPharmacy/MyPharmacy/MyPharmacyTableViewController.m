@@ -10,33 +10,28 @@
 #import "MFSideMenu.h"
 #import "TableViewCell.h"
 #import "AddByHandsViewController.h"
-@interface MyPharmacyTableViewController ()
+@interface MyPharmacyTableViewController ()<UITableViewDelegate,UITableViewDataSource>{
+
+}
 
 @end
 
 @implementation MyPharmacyTableViewController{
     NSMutableArray *dataPlist;
     NSMutableDictionary * arrOfData;
-    UIView *noTableView;
 }
-
 -(NSMutableArray *)tablets{
-//    if (!_tablets){
         _tablets= [[[NSUserDefaults standardUserDefaults] objectForKey:@"myPharmacyKey"] mutableCopy];
-//
-//    }
-//    if (!_tablets)  _tablets = [[NSMutableArray alloc]init];
-    
     if (!_tablets) {
         _tablets = [[NSArray alloc] init];
-        [noTableView setHidden:NO];
-        [self.tableView setHidden:YES];
-        [self.view bringSubviewToFront:noTableView];
+        [self.NoTabletLabel setHidden:NO];
+        [self.TabletsTableView setHidden:YES];
+        [self.view bringSubviewToFront:self.NoTabletLabel];
     }
     else{
-        [noTableView setHidden:YES];
-        [self.tableView setHidden:NO];
-        [self.view bringSubviewToFront:self.tableView];
+        [self.NoTabletLabel setHidden:YES];
+        [self.TabletsTableView setHidden:NO];
+        [self.view bringSubviewToFront:self.TabletsTableView];
     }
 
     return _tablets;
@@ -44,22 +39,13 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    _tablets = nil;
-    [self.tableView reloadData];
+    [self.TabletsTableView reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    noTableView = [[UIView alloc]initWithFrame:CGRectMake(0,0,320, 568)];
-//    [noTableView setBackgroundColor:[UIColor lightGrayColor]];
-    noTableView.backgroundColor = [UIColor redColor];
-    UILabel *noTabletLabel = [[UILabel alloc]initWithFrame:CGRectMake(110, 568/2-15, 100, 30)];
-    noTabletLabel.text = @"No Tablet";
-    [noTabletLabel setTextColor:[UIColor grayColor]];;
-    [noTableView addSubview:noTabletLabel];
-    [self.tableView addSubview:noTableView];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    self.TabletsTableView.delegate = self;
+    self.TabletsTableView.dataSource = self;
     
 }
 
@@ -67,20 +53,23 @@
         [self.menuContainerViewController toggleLeftSideMenuCompletion:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    // Return the number of sections.
-    return 1;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    int number =(int)self.tablets.count;
+    if(number==0) {
+        [self.NoTabletLabel setHidden:NO];
+        [self.TabletsTableView setHidden:YES];
+        [self.view bringSubviewToFront:self.NoTabletLabel];
+    }
+    else{
+        [self.NoTabletLabel setHidden:YES];
+        [self.TabletsTableView setHidden:NO];
+        [self.view bringSubviewToFront:self.TabletsTableView];
+    }
+    return number;
 }
-
-
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
@@ -91,47 +80,34 @@
         [a removeObjectAtIndex:indexPath.row];
         [[NSUserDefaults standardUserDefaults] setValue:a forKey:@"myPharmacyKey"];
     }
-    [self.tableView reloadData];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    int number =(int)self.tablets.count;
-    if (number == 0) {
-        _tablets = [[NSArray alloc] init];
-        [noTableView setHidden:NO];
-        [self.tableView setHidden:YES];
-        [self.view bringSubviewToFront:noTableView];
-    }
-    else{
-        [noTableView setHidden:YES];
-        [self.tableView setHidden:NO];
-        [self.view bringSubviewToFront:self.tableView];
-    }
-    return number;
+    [self.TabletsTableView reloadData];
 }
 
 
+    
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
-    NSDictionary * myTable = self.tablets[indexPath.row];
-    
-    cell.nameLabel.text = [NSString stringWithFormat:@"%@",myTable[@"nameOfTablet"]];
-    cell.expDateLabel.text = [NSString stringWithFormat:@"%@",myTable[@"expOfDate"]];
-    cell.qualityLabel.text = [NSString stringWithFormat:@"%@ pcs.",myTable[@"qualityOfTablet"]];
+    UITableViewCell* cell;
+    if ([tableView isEqual:self.TabletsTableView]){
+        TableViewCell* tabletCell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        NSDictionary * myTable = self.tablets[indexPath.row];
+        
+        tabletCell.nameLabel.text = [NSString stringWithFormat:@"%@",myTable[@"nameOfTablet"]];
+        tabletCell.expDateLabel.text = [NSString stringWithFormat:@"%@",myTable[@"expOfDate"]];
+        tabletCell.qualityLabel.text = [NSString stringWithFormat:@"%@ pcs.",myTable[@"qualityOfTablet"]];
+        cell=tabletCell;
+    }
     return cell;
 }
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 30;
-//}
+    
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
     if([segue.identifier isEqualToString:@"next"]){
-        NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];
+        NSIndexPath* indexPath = [self.TabletsTableView indexPathForSelectedRow];
         AddByHandsViewController* n=segue.destinationViewController;
         NSMutableDictionary* d =[self.tablets objectAtIndex:indexPath.row];
         n.dic = d;
         myIndex = (int)indexPath.row;
-        [self.tableView reloadData];
+        [self.TabletsTableView reloadData];
         
     }
 }
