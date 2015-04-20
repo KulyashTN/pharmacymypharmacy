@@ -9,6 +9,7 @@
 
 #import "ScannerViewController.h"
 #import "Barcode.h"
+
 @import AVFoundation;   // iOS7 only import style
 
 @interface ScannerViewController ()
@@ -19,20 +20,6 @@
 @end
 
 @implementation ScannerViewController{
-    /* Here’s a quick rundown of the instance variables (via 'iOS 7 By Tutorials'):
-     
-     1. _captureSession – AVCaptureSession is the core media handling class in AVFoundation. It talks to the hardware to retrieve, process, and output video. A capture session wires together inputs and outputs, and controls the format and resolution of the output frames.
-     
-     2. _videoDevice – AVCaptureDevice encapsulates the physical camera on a device. Modern iPhones have both front and rear cameras, while other devices may only have a single camera.
-     
-     3. _videoInput – To add an AVCaptureDevice to a session, wrap it in an AVCaptureDeviceInput. A capture session can have multiple inputs and multiple outputs.
-     
-     4. _previewLayer – AVCaptureVideoPreviewLayer provides a mechanism for displaying the current frames flowing through a capture session; it allows you to display the camera output in your UI.
-     5. _running – This holds the state of the session; either the session is running or it’s not.
-     6. _metadataOutput - AVCaptureMetadataOutput provides a callback to the application when metadata is detected in a video frame. AV Foundation supports two types of metadata: machine readable codes and face detection.
-     7. _backgroundQueue - Used for showing alert using a separate thread.
-     */
-    
     AVCaptureSession *_captureSession;
     AVCaptureDevice *_videoDevice;
     AVCaptureDeviceInput *_videoInput;
@@ -43,7 +30,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self setupCaptureSession];
     _previewLayer.frame = _previewView.bounds;
     [_previewView.layer addSublayer:_previewLayer];
@@ -80,6 +66,86 @@
     [self.allowedBarcodeTypes addObject:@"org.gs1.EAN-8"];
     [self.allowedBarcodeTypes addObject:@"com.intermec.Code93"];
     [self.allowedBarcodeTypes addObject:@"org.iso.Code128"];
+    
+#pragma DB
+    NSString *docsDir;
+    NSArray *dirPaths;
+    
+    // Get the documents directory
+    dirPaths = NSSearchPathForDirectoriesInDomains(
+                                                   NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    docsDir = dirPaths[0];
+    
+    // Build the path to the database file
+    _databasePath = [[NSString alloc]
+                     initWithString: [docsDir stringByAppendingPathComponent:
+                                      @"myDrugsDB.db"]];
+    
+    NSFileManager *filemgr = [NSFileManager defaultManager];
+    
+    if ([filemgr fileExistsAtPath: _databasePath ] == NO)
+    {
+        const char *dbpath = [_databasePath UTF8String];
+        
+        if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
+        {
+            char *errMsg;
+            const char *sql_stmt =
+            "CREATE TABLE IF NOT EXISTS drugTable (drugsBarCode	TEXT,title TEXT,uses TEXT,contraindications TEXT,sideEffects TEXT,howToUse TEXT,overDose TEXT)";
+
+            if (sqlite3_exec(_contactDB, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK)
+            {
+//                _status.text = @"Failed to create table";
+                NSLog(@"Failed to create table");
+            }
+            sqlite3_close(_contactDB);
+        } else {
+//            _status.text = @"Failed to open/create database";
+            NSLog(@"Failed to open/create database");
+        }
+    }
+}
+
+- (void) findContact
+{
+    const char *dbpath = [_databasePath UTF8String];
+    sqlite3_stmt    *statement;
+    
+    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:@"select * FROM drugTable"];
+//                              @"SELECT title, uses,contraindications,sideEffects,howToUse,overDose FROM drugTable WHERE drugsBarCode=\"%@\"",
+//                              self.barCodeTextField.text];
+        
+        const char *query_stmt = [querySQL UTF8String];
+        
+        if (sqlite3_prepare_v2(_contactDB,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_ROW)
+            {
+//                NSString *addressField = [[NSString alloc]
+//                                          initWithUTF8String:
+//                                          (const char *) sqlite3_column_text(
+//                                                                             statement, 0)];
+//                _address.text = addressField;
+//                NSString *phoneField = [[NSString alloc]
+//                                        initWithUTF8String:(const char *)
+//                                        sqlite3_column_text(statement, 1)];
+//                _phone.text = phoneField;
+//                _status.text = @"Match found";
+                NSLog(@"FOUND");
+            } else {
+//                _status.text = @"Match not found";
+//                _address.text = @"";
+//                _phone.text = @"";
+                NSLog(@"NOT FOUND");
+            }
+            sqlite3_finalize(statement);
+        }
+        sqlite3_close(_contactDB);
+    }
 }
 
 -(void)hideKeyBoard {
@@ -94,7 +160,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.barCodeTextField) {
         if ([self.barCodeTextField.text length]>0){
-            NSLog(@"WORKED");
+            [self findContact];
         }else{
             [self hideKeyBoard];
         }
