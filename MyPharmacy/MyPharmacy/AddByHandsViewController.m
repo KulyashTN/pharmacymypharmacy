@@ -43,8 +43,13 @@
         come=NO;
     }
     
+    
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [self.scroll setContentSize:CGSizeMake(320, 1000)];
+}
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if (textField == self.expDateTextField) {
 //        UIView* dummyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];

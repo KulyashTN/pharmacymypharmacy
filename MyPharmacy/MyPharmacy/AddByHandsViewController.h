@@ -14,5 +14,8 @@ int myIndex;
 @property (weak, nonatomic) IBOutlet UITextField *quantityTextField;
 @property (weak, nonatomic) IBOutlet UITextView *descTextAria;
 @property (weak, nonatomic) NSDictionary* dic;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scroll;
+
 -(void)method:(NSDictionary*)d;
 @end

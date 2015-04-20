@@ -47,6 +47,7 @@
     self.TabletsTableView.delegate = self;
     self.TabletsTableView.dataSource = self;
     
+    
 }
 
 - (IBAction)showLeftMenuPressed:(id)sender {
