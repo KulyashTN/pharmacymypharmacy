@@ -14,6 +14,8 @@
 		321912331A9C79BE002DA0C3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 321912311A9C79BE002DA0C3 /* LaunchScreen.xib */; };
 		3219123F1A9C79BE002DA0C3 /* MyPharmacyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3219123E1A9C79BE002DA0C3 /* MyPharmacyTests.m */; };
 		4E21D6501ACB21910007A9DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E21D64E1ACB21910007A9DB /* Main.storyboard */; };
+		4E2DF9B21AE55B7100BC88C0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2DF9B11AE55B7100BC88C0 /* libsqlite3.dylib */; };
+		4E2DF9B51AE55BF300BC88C0 /* myDrugsDB in Resources */ = {isa = PBXBuildFile; fileRef = 4E2DF9B41AE55BF300BC88C0 /* myDrugsDB */; };
 		4E46A82F1AD332FC00505B35 /* AddByHandsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E46A82E1AD332FC00505B35 /* AddByHandsViewController.m */; };
 		4E46A8351AD336C500505B35 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E46A8341AD336C400505B35 /* data.plist */; };
 		4E793FD71AD3C48700A0453A /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E793FD61AD3C48700A0453A /* TableViewCell.m */; };
@@ -59,6 +61,8 @@
 		3219123D1A9C79BE002DA0C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3219123E1A9C79BE002DA0C3 /* MyPharmacyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPharmacyTests.m; sourceTree = "<group>"; };
 		4E21D64F1ACB21910007A9DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MyPharmacy/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4E2DF9B11AE55B7100BC88C0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		4E2DF9B41AE55BF300BC88C0 /* myDrugsDB */ = {isa = PBXFileReference; lastKnownFileType = file; path = myDrugsDB; sourceTree = SOURCE_ROOT; };
 		4E46A82D1AD332FC00505B35 /* AddByHandsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddByHandsViewController.h; sourceTree = "<group>"; };
 		4E46A82E1AD332FC00505B35 /* AddByHandsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddByHandsViewController.m; sourceTree = "<group>"; };
 		4E46A8341AD336C400505B35 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E2DF9B21AE55B7100BC88C0 /* libsqlite3.dylib in Frameworks */,
 				4EFDC9B81AE3E3CF00792721 /* CoreGraphics.framework in Frameworks */,
 				4EFDC9B61AE3E3C800792721 /* Foundation.framework in Frameworks */,
 				4EFDC9B41AE3E3C000792721 /* UIKit.framework in Frameworks */,
@@ -184,6 +189,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4E2DF9B31AE55BE800BC88C0 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				4E2DF9B41AE55BF300BC88C0 /* myDrugsDB */,
+			);
+			name = DB;
+			sourceTree = "<group>";
+		};
 		4E793FD41AD3C42C00A0453A /* leftMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +214,7 @@
 		4E93CF001AD31FE3005B193D /* MyPharmacy */ = {
 			isa = PBXGroup;
 			children = (
+				4E2DF9B31AE55BE800BC88C0 /* DB */,
 				4EFDC9A71AE3E03C00792721 /* barcode */,
 				4E93CF011AD32009005B193D /* MyPharmacyTableViewController.h */,
 				4E93CF021AD32009005B193D /* MyPharmacyTableViewController.m */,
@@ -240,6 +254,7 @@
 		4EFDC9B91AE3E3D400792721 /* FrameWork */ = {
 			isa = PBXGroup;
 			children = (
+				4E2DF9B11AE55B7100BC88C0 /* libsqlite3.dylib */,
 				4EFDC9B71AE3E3CF00792721 /* CoreGraphics.framework */,
 				4EFDC9B51AE3E3C800792721 /* Foundation.framework */,
 				4EFDC9B31AE3E3C000792721 /* UIKit.framework */,
@@ -328,6 +343,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E2DF9B51AE55BF300BC88C0 /* myDrugsDB in Resources */,
 				B7727DF41AE501AB00DF77D8 /* Icon.png in Resources */,
 				B740C5F41ACA643600B46137 /* 1.png in Resources */,
 				321912331A9C79BE002DA0C3 /* LaunchScreen.xib in Resources */,

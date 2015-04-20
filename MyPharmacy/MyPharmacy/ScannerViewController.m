@@ -32,6 +32,7 @@
      6. _metadataOutput - AVCaptureMetadataOutput provides a callback to the application when metadata is detected in a video frame. AV Foundation supports two types of metadata: machine readable codes and face detection.
      7. _backgroundQueue - Used for showing alert using a separate thread.
      */
+    
     AVCaptureSession *_captureSession;
     AVCaptureDevice *_videoDevice;
     AVCaptureDeviceInput *_videoInput;
@@ -47,6 +48,13 @@
     _previewLayer.frame = _previewView.bounds;
     [_previewView.layer addSublayer:_previewLayer];
     self.foundBarcodes = [[NSMutableArray alloc] init];
+    
+    self.barCodeTextField.delegate =self;
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(hideKeyBoard)];
+    
+    [_previewView addGestureRecognizer:tapGesture];
     
     // listen for going into the background and stop the session
     [[NSNotificationCenter defaultCenter]
@@ -74,11 +82,26 @@
     [self.allowedBarcodeTypes addObject:@"org.iso.Code128"];
 }
 
+-(void)hideKeyBoard {
+    [self.barCodeTextField resignFirstResponder];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self startRunning];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.barCodeTextField) {
+        if ([self.barCodeTextField.text length]>0){
+            NSLog(@"WORKED");
+        }else{
+            [self hideKeyBoard];
+        }
+        return NO;
+    }
+    return YES;
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];

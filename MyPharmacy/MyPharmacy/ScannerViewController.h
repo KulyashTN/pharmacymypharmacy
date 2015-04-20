@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 @interface ScannerViewController : UIViewController<UIAlertViewDelegate>
 @property (strong, nonatomic) NSMutableArray * allowedBarcodeTypes;
+@property (weak, nonatomic) IBOutlet UITextField *barCodeTextField;
 
 @end

@@ -8,12 +8,15 @@
 
 #import "AppDelegate.h"
 #import "MFSideMenu.h"
+#import <sqlite3.h>
 @interface AppDelegate ()
-
+//@property (readonly) NSURL *databaseURL;
+//@property (readonly) BOOL databaseExists;
 @end
 
 @implementation AppDelegate
-
+//@dynamic databaseURL;
+//@dynamic databaseExists;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
@@ -41,6 +44,17 @@
     if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
+    
+//    sqlite3 *db;
+//    if (sqlite3_open([[self.databaseURL path] UTF8String], &db) == SQLITE_OK) {
+//        if (sqlite3_exec(db, (const char*) "SELECT count(*) FROM sqlite_master;", NULL, NULL, NULL) == SQLITE_OK) {
+//            NSLog(@"Password is correct, or a new database has been initialized");
+//        } else {
+//            NSLog(@"Incorrect password!");
+//        }
+//        sqlite3_close(db);
+//    }
+    
     
     return YES;
 }
