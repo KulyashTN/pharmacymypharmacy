@@ -22,8 +22,8 @@
 {
     [super viewDidLoad];
     
-    menuItems = @[@"Main",@"My pharmacy",@"Add tablet",@"Notes",@"About us"];
-    menuItems1 = @[@"",@"",@"",@"",@""];
+    menuItems = @[@"My Pharmacy",@"Add Tablet",@"Notes",@"About us"];
+    menuItems1 = @[@"",@"",@"",@""];
     
     self.tableView1.delegate = self;
     self.tableView1.dataSource = self;
@@ -66,14 +66,7 @@
     [cell setSelectedBackgroundView:selectedColor];
     
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-    
-    if(indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 5)
-    {
-        [cell.nameCell setTextColor:[UIColor colorWithRed:190/255.0f green:191/255.0f blue:188/255.0f alpha:1.0f]];
-        [cell.iconCell setTextColor:[UIColor colorWithRed:190/255.0f green:191/255.0f blue:188/255.0f alpha:1.0f]];
-        cell.imageCell.image = [UIImage imageNamed:@"soon.png"];
-    }
-    
+        
     cell.nameCell.text = [menuItems objectAtIndex:indexPath.row];
     cell.iconCell.text = [menuItems1 objectAtIndex:indexPath.row];
     return cell;
@@ -86,35 +79,21 @@
     {
         if  (indexPath.row==0)
         {
-            UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"event"];
+            UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"myPharmacy"];
             NSArray *controllers = [NSArray arrayWithObject:viewController];
             navigationController.viewControllers = controllers;
         }else if (indexPath.row==1)
         {
-            UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"myrequest"];
+            UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addTablet"];
             NSArray *controllers = [NSArray arrayWithObject:viewController];
             navigationController.viewControllers = controllers;
         }else if (indexPath.row==2)
         {
-            UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newrequest"];
+            UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"node"];
             NSArray *controllers = [NSArray arrayWithObject:viewController];
             navigationController.viewControllers = controllers;
-        }else if (indexPath.row==6)
-        {
-            UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"settings"];
-            NSArray *controllers = [NSArray arrayWithObject:viewController];
-            navigationController.viewControllers = controllers;
-        }
-        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
+        }        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
     }
 }
 
--(bool)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if(indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 5)
-    {
-        return NO;
-    }
-    return YES;
-}
 @end

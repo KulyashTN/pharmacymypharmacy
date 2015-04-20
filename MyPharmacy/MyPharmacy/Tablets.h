@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface Tablets : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *time;
+@property (weak, nonatomic) IBOutlet UILabel *notes;
 
 @end

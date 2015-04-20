@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "MFSideMenu.h"
 @interface ViewController ()
 
 @end
@@ -16,6 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+}
+- (IBAction)showLeftMenuPressed:(id)sender {
+        [self.menuContainerViewController toggleLeftSideMenuCompletion:nil];
     
 }
 
