@@ -9,7 +9,7 @@
 
 #import "ScannerViewController.h"
 #import "Barcode.h"
-
+#import "DatabaseManager.h"
 @import AVFoundation;   // iOS7 only import style
 
 @interface ScannerViewController ()
@@ -26,6 +26,9 @@
     AVCaptureVideoPreviewLayer *_previewLayer;
     BOOL _running;
     AVCaptureMetadataOutput *_metadataOutput;
+    DatabaseManager * databaseManager;
+    UIAlertView *AddAlertView;
+    UITextField *textField,*textField2;
 }
 
 - (void)viewDidLoad {
@@ -68,85 +71,9 @@
     [self.allowedBarcodeTypes addObject:@"org.iso.Code128"];
     
 #pragma DB
-    NSString *docsDir;
-    NSArray *dirPaths;
-    
-    // Get the documents directory
-    dirPaths = NSSearchPathForDirectoriesInDomains(
-                                                   NSDocumentDirectory, NSUserDomainMask, YES);
-    
-    docsDir = dirPaths[0];
-    
-    // Build the path to the database file
-    _databasePath = [[NSString alloc]
-                     initWithString: [docsDir stringByAppendingPathComponent:
-                                      @"myDrugsDB.db"]];
-    
-    NSFileManager *filemgr = [NSFileManager defaultManager];
-    
-    if ([filemgr fileExistsAtPath: _databasePath ] == NO)
-    {
-        const char *dbpath = [_databasePath UTF8String];
-        
-        if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
-        {
-            char *errMsg;
-            const char *sql_stmt =
-            "CREATE TABLE IF NOT EXISTS drugTable (drugsBarCode	TEXT,title TEXT,uses TEXT,contraindications TEXT,sideEffects TEXT,howToUse TEXT,overDose TEXT)";
-
-            if (sqlite3_exec(_contactDB, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK)
-            {
-//                _status.text = @"Failed to create table";
-                NSLog(@"Failed to create table");
-            }
-            sqlite3_close(_contactDB);
-        } else {
-//            _status.text = @"Failed to open/create database";
-            NSLog(@"Failed to open/create database");
-        }
-    }
+     databaseManager = [[DatabaseManager alloc] init];
 }
 
-- (void) findContact
-{
-    const char *dbpath = [_databasePath UTF8String];
-    sqlite3_stmt    *statement;
-    
-    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
-    {
-        NSString *querySQL = [NSString stringWithFormat:@"select * FROM drugTable"];
-//                              @"SELECT title, uses,contraindications,sideEffects,howToUse,overDose FROM drugTable WHERE drugsBarCode=\"%@\"",
-//                              self.barCodeTextField.text];
-        
-        const char *query_stmt = [querySQL UTF8String];
-        
-        if (sqlite3_prepare_v2(_contactDB,
-                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
-        {
-            if (sqlite3_step(statement) == SQLITE_ROW)
-            {
-//                NSString *addressField = [[NSString alloc]
-//                                          initWithUTF8String:
-//                                          (const char *) sqlite3_column_text(
-//                                                                             statement, 0)];
-//                _address.text = addressField;
-//                NSString *phoneField = [[NSString alloc]
-//                                        initWithUTF8String:(const char *)
-//                                        sqlite3_column_text(statement, 1)];
-//                _phone.text = phoneField;
-//                _status.text = @"Match found";
-                NSLog(@"FOUND");
-            } else {
-//                _status.text = @"Match not found";
-//                _address.text = @"";
-//                _phone.text = @"";
-                NSLog(@"NOT FOUND");
-            }
-            sqlite3_finalize(statement);
-        }
-        sqlite3_close(_contactDB);
-    }
-}
 
 -(void)hideKeyBoard {
     [self.barCodeTextField resignFirstResponder];
@@ -160,7 +87,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.barCodeTextField) {
         if ([self.barCodeTextField.text length]>0){
-            [self findContact];
+    
         }else{
             [self hideKeyBoard];
         }
@@ -278,36 +205,103 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
 - (void) showBarcodeAlert:(Barcode *)barcode{
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // Code to do in background processing
+        
+        NSArray * array = [databaseManager findeCity:[NSString stringWithFormat:@"%@",[barcode getBarcodeData]]];
+        NSLog(@"%lu",(unsigned long)[array count]);
+        if ([array count]>0){
+//        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"title" ]);
+//        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"uses" ]);
+//        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"contraindications" ]);
+//        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"sideEffects" ]);
+//        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"howToUse" ]);
+//        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"overDose" ]);
+            NSLog(@"Founding");
+            AddAlertView = [[UIAlertView alloc]
+                                      initWithTitle:@"Attention"
+                                      message:@"Please enter quantity and expiration date"
+                                      delegate:self
+                                      cancelButtonTitle:@"Cancel"
+                                      otherButtonTitles:@"Ok", nil];
+            AddAlertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
+            textField = [AddAlertView textFieldAtIndex:0];
+            textField2 = [AddAlertView textFieldAtIndex:1];
+            textField2.secureTextEntry = NO;
+            textField.placeholder = @"enter number";
+            textField2.placeholder = @"01-01-2015";
+            textField.keyboardType = UIKeyboardTypeNumberPad;
+            textField2.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [AddAlertView show];
+            });
+            
+            
+            
+        }else{
+        
+        }
+        [databaseManager close];
+        
         NSString * alertMessage = @"You found a barcode with type ";
         alertMessage = [alertMessage stringByAppendingString:[barcode getBarcodeType]];
-//        alertMessage = [alertMessage stringByAppendingString:@" and data "];
-//        alertMessage = [alertMessage stringByAppendingString:[barcode getBarcodeData]];
+        alertMessage = [alertMessage stringByAppendingString:@" and data "] ;
+        alertMessage = [alertMessage stringByAppendingString:[barcode getBarcodeData]];
+
         alertMessage = [alertMessage stringByAppendingString:@"\n\nBarcode added to array of "];
         alertMessage = [alertMessage stringByAppendingString:[NSString stringWithFormat:@"%lu",(unsigned long)[self.foundBarcodes count]-1]];
         alertMessage = [alertMessage stringByAppendingString:@" previously found barcodes."];
         
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Barcode Found!"
-                                                          message:alertMessage
-                                                         delegate:self
-                                                cancelButtonTitle:@"Done"
-                                                otherButtonTitles:@"Scan again",nil];
+//        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Barcode Found!"
+//                                                          message:alertMessage
+//                                                         delegate:self
+//                                                cancelButtonTitle:@"Done"
+//                                                otherButtonTitles:@"Scan again",nil];
         
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // Code to update the UI/send notifications based on the results of the background processing
-            [message show];
+//            [message show];
 
         });
     });
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 0){
-        //Code for Done button
-        // TODO: Create a finished view
+        if (alertView == AddAlertView){
+            
+        }else{
+        
+        }
     }
     if(buttonIndex == 1){
-        //Code for Scan more button
-        [self startRunning];
+        if (alertView == AddAlertView){
+            if ([textField2.text length]==10){
+                NSString *day = [textField2.text substringWithRange:NSMakeRange(0,2)];
+                NSString *month = [textField2.text substringWithRange:NSMakeRange(3,2)];
+                NSString *year = [textField2.text substringWithRange:NSMakeRange(6,4)];
+                if ([day intValue]>31 || [month intValue]>12 || [year intValue]<2015){
+//                    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"The date is not correct" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+//                    [alert show];
+                    NSLog(@"asdasd");
+                    CABasicAnimation *move = [CABasicAnimation animationWithKeyPath:@"transform.translation.x" ];
+                    [move setFromValue:[NSNumber numberWithFloat:0.0f]];
+                    [move setToValue:[NSNumber numberWithFloat:100.0f]];
+                    [move setDuration:1.0f];
+                    //Add animation to a specific element's layer. Must be called after the element is displayed.
+                    [[AddAlertView layer] addAnimation:move forKey:@"transform.translation.x"];
+                    
+//                    [AddAlertView animationDidStart:animation];
+                    textField2.text=@"";
+                    [textField2 setPlaceholder:@"01-01-2015"];
+                }else{
+                    
+                
+                }
+            }else{
+                    NSLog(@"asdasd");
+            }
+        }else{
+            [self startRunning];
+        }
     }
 }
 

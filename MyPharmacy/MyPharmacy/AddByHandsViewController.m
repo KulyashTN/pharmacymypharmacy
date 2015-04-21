@@ -60,13 +60,12 @@
 
 -(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     if (textField == self.expDateTextField) {
-        NSLog(@"%d",[self.expDateTextField.text length]);
+//        NSLog(@"%d",[self.expDateTextField.text length]);
         if ([self.expDateTextField.text length]==10){
             NSString *day = [self.expDateTextField.text substringWithRange:NSMakeRange(0,2)];
             NSString *month = [self.expDateTextField.text substringWithRange:NSMakeRange(3,2)];
             NSString *year = [self.expDateTextField.text substringWithRange:NSMakeRange(6,4)];
-            NSLog(@"sadasdsa ");
-            if ([day intValue]>31 || [month intValue]>12 || ([year intValue]<2015 && [year intValue]>2017)){
+            if ([day intValue]>31 || [month intValue]>12 || [year intValue]<2015){
                 UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"The date is not correct" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [alert show];
                 self.expDateTextField.text=@"";
@@ -80,7 +79,6 @@
         s = [s invertedSet];
         NSRange r = [self.expDateTextField.text rangeOfCharacterFromSet:s];
         if (r.location != NSNotFound) {
-            NSLog(@"WTF?");
         }
     }
     return YES;

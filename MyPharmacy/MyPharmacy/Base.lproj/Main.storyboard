@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UxQ-5q-LS5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UxQ-5q-LS5">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="FontAwesome.otf">
@@ -79,7 +79,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="XTr-o8-P7T" kind="show" id="RhM-Xb-mCE"/>
+                                    <segue destination="XTr-o8-P7T" kind="show" id="Ozn-rn-4Sq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lg9-6i-ksn">
@@ -121,7 +121,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UMb-Bf-E8a">
                                 <rect key="frame" x="0.0" y="117" width="320" height="451"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bar Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w3k-ZQ-fIW">
                                 <rect key="frame" x="16" y="79" width="288" height="30"/>
@@ -149,11 +149,11 @@
                         <viewControllerLayoutGuide type="bottom" id="3EK-AZ-kHo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lJe-Ms-lAg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="3000"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2PF-UI-UDI">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="3000"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev9-3H-fX2">
                                         <rect key="frame" x="18" y="85" width="50" height="21"/>
@@ -196,10 +196,34 @@
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IqC-Tl-E8V">
                                         <rect key="frame" x="18" y="257" width="286" height="233"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O24-aB-n6y">
+                                        <rect key="frame" x="129" y="659" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SpM-Ce-eh2">
+                                        <rect key="frame" x="-16" y="1146" width="320" height="162"/>
+                                    </pickerView>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SiU-Ug-Xmx">
+                                        <rect key="frame" x="0.0" y="2077" width="320" height="162"/>
+                                    </pickerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzw-75-PkA">
+                                        <rect key="frame" x="161" y="2730" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhM-f6-p39">
+                                        <rect key="frame" x="139" y="2960" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -214,6 +238,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="3000"/>
                     <connections>
                         <outlet property="descTextAria" destination="IqC-Tl-E8V" id="zK8-jy-4gn"/>
                         <outlet property="expDateTextField" destination="R7n-PV-z4l" id="sHZ-eo-Uem"/>
@@ -224,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEe-mZ-2uT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="343" y="171"/>
+            <point key="canvasLocation" x="967" y="551"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="pjs-Ed-2mK">
@@ -300,7 +326,7 @@
             </objects>
             <point key="canvasLocation" x="-184" y="-1202"/>
         </scene>
-        <!--Add tablet-->
+        <!--Title-->
         <scene sceneID="ozT-tr-aW7">
             <objects>
                 <viewController storyboardIdentifier="addTablet" id="XTr-o8-P7T" customClass="AddTabletViewController" sceneMemberID="viewController">
@@ -320,7 +346,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oJH-FR-42P">
-                                <rect key="frame" x="0.0" y="74" width="320" height="450"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="65" id="xlj-JR-GD1" customClass="Tablets">
@@ -360,11 +386,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Add tablet" id="avq-np-3zd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="onl-aW-Jcd">
-                            <color key="tintColor" red="0.87628235480000005" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <navigationItem key="navigationItem" title="Title" id="O6K-Lr-kdq">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="Jau-RI-TDD">
                             <connections>
-                                <segue destination="b76-3S-Tta" kind="show" id="BrO-6S-RAH"/>
+                                <action selector="showLeftMenuPressed:" destination="XTr-o8-P7T" id="RTL-tJ-R4r"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="WG6-jn-kpf">
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="b76-3S-Tta" kind="show" id="vnP-wB-jwg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -668,15 +699,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGi-ef-N3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="343" y="-463"/>
+            <point key="canvasLocation" x="463" y="-463"/>
         </scene>
     </scenes>
     <resources>
         <image name="1.png" width="38" height="38"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Ozn-rn-4Sq"/>
+        <segue reference="vnP-wB-jwg"/>
         <segue reference="wRi-o1-HKX"/>
-        <segue reference="lLl-YB-FJK"/>
-        <segue reference="BrO-6S-RAH"/>
     </inferredMetricsTieBreakers>
 </document>

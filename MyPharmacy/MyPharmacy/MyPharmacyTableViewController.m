@@ -10,6 +10,7 @@
 #import "MFSideMenu.h"
 #import "TableViewCell.h"
 #import "AddByHandsViewController.h"
+#import "DatabaseManager.h"
 @interface MyPharmacyTableViewController ()<UITableViewDelegate,UITableViewDataSource>{
 
 }
@@ -47,7 +48,7 @@
     self.TabletsTableView.delegate = self;
     self.TabletsTableView.dataSource = self;
     
-    
+
 }
 
 - (IBAction)showLeftMenuPressed:(id)sender {
