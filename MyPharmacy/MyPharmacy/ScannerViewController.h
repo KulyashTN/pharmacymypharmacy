@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <sqlite3.h>
-@interface ScannerViewController : UIViewController<UIAlertViewDelegate>
+@interface ScannerViewController : UIViewController<UIAlertViewDelegate,UITextFieldDelegate>
 @property (strong, nonatomic) NSMutableArray * allowedBarcodeTypes;
 @property (weak, nonatomic) IBOutlet UITextField *barCodeTextField;
 @property (strong, nonatomic) NSString *databasePath;

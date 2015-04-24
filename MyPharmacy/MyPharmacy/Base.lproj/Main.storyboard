@@ -149,7 +149,7 @@
                         <viewControllerLayoutGuide type="bottom" id="3EK-AZ-kHo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lJe-Ms-lAg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="3000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2PF-UI-UDI">
@@ -238,8 +238,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="3000"/>
                     <connections>
                         <outlet property="descTextAria" destination="IqC-Tl-E8V" id="zK8-jy-4gn"/>
                         <outlet property="expDateTextField" destination="R7n-PV-z4l" id="sHZ-eo-Uem"/>
@@ -250,7 +248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEe-mZ-2uT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967" y="551"/>
+            <point key="canvasLocation" x="-426" y="927"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="pjs-Ed-2mK">

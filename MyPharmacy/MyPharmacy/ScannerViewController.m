@@ -34,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupCaptureSession];
+    textField2.delegate =self;
     _previewLayer.frame = _previewView.bounds;
     [_previewView.layer addSublayer:_previewLayer];
     self.foundBarcodes = [[NSMutableArray alloc] init];
@@ -215,7 +216,6 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
 //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"sideEffects" ]);
 //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"howToUse" ]);
 //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"overDose" ]);
-            NSLog(@"Founding");
             AddAlertView = [[UIAlertView alloc]
                                       initWithTitle:@"Attention"
                                       message:@"Please enter quantity and expiration date"
@@ -225,6 +225,8 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
             AddAlertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
             textField = [AddAlertView textFieldAtIndex:0];
             textField2 = [AddAlertView textFieldAtIndex:1];
+            
+            textField2.delegate=self;
             textField2.secureTextEntry = NO;
             textField.placeholder = @"enter number";
             textField2.placeholder = @"01-01-2015";
@@ -233,11 +235,8 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
             dispatch_async(dispatch_get_main_queue(), ^{
                 [AddAlertView show];
             });
-            
-            
-            
         }else{
-        
+            
         }
         [databaseManager close];
         
@@ -281,19 +280,40 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
                 if ([day intValue]>31 || [month intValue]>12 || [year intValue]<2015){
 //                    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"The date is not correct" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 //                    [alert show];
-                    NSLog(@"asdasd");
-                    CABasicAnimation *move = [CABasicAnimation animationWithKeyPath:@"transform.translation.x" ];
-                    [move setFromValue:[NSNumber numberWithFloat:0.0f]];
-                    [move setToValue:[NSNumber numberWithFloat:100.0f]];
-                    [move setDuration:1.0f];
-                    //Add animation to a specific element's layer. Must be called after the element is displayed.
-                    [[AddAlertView layer] addAnimation:move forKey:@"transform.translation.x"];
+//                    CABasicAnimation *move = [CABasicAnimation animationWithKeyPath:@"transform.translation.x" ];
+//                    [move setFromValue:[NSNumber numberWithFloat:0.0f]];
+//                    [move setToValue:[NSNurmber numberWithFloat:100.0f]];
+//                    [move setDuration:1.0f];
+//                    //Add animation to a specific element's layer. Must be called after the element is displayed.
+//                    [[AddAlertView layer] addAnimation:move forKey:@"transform.translation.x"];
                     
 //                    [AddAlertView animationDidStart:animation];
+
+                    textField2.layer.cornerRadius=8.0f;
+                    textField2.layer.masksToBounds=YES;
+                    textField2.layer.borderColor=[[UIColor redColor]CGColor];
+                    textField2.layer.borderWidth= 1.0f;
+                    [AddAlertView show];
+//                    CGRect napkinTopFrame = AddAlertView.frame;
+//                    napkinTopFrame.origin.y = -napkinTopFrame.size.height;
+//                    CGRect napkinBottomFrame = AddAlertView.frame;
+//                    napkinBottomFrame.origin.y = AddAlertView.bounds.size.height;
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [UIView animateWithDuration:1
+//                                              delay:1.5
+//                                            options: UIViewAnimationCurveEaseIn
+//                                         animations:^{
+//                                             AddAlertView.frame = napkinTopFrame;
+//                                             AddAlertView.frame = napkinBottomFrame;
+//                                         }
+//                                         completion:^(BOOL finished){
+//                                             NSLog(@"Done!");
+//                                         }];
+//                    });
                     textField2.text=@"";
                     [textField2 setPlaceholder:@"01-01-2015"];
                 }else{
-                    
+//                        NSUSERDEFAULT
                 
                 }
             }else{
@@ -303,6 +323,69 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
             [self startRunning];
         }
     }
+}
+
+#pragma MASKA TELEPHON
+-(NSString*)formatNumber:(NSString*)mobileNumber
+{
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"(" withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@")" withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"+" withString:@""];
+    int length = (int)[mobileNumber length];
+    if(length > 4) {
+        mobileNumber = [mobileNumber substringFromIndex: length-4];
+    }
+    return mobileNumber;
+}
+
+-(int)getLength:(NSString*)mobileNumber
+{
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"(" withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@")" withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"+" withString:@""];
+    
+    int length = (int)[mobileNumber length];
+    return length;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if(textField == textField2){
+        NSString *nameRegex = @"[0-9]+";
+        NSPredicate *nameTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", nameRegex];
+        if (string.length==0) {
+            return YES;
+        }
+        else if(![nameTest evaluateWithObject:string]){
+            return NO;
+        }
+        
+        int length = [self getLength:textField2.text];
+        
+        if(length == 8) {
+            if(range.length == 0)
+                return NO;
+        }
+        
+        if(length == 2) {
+            NSString *num = [self formatNumber:textField2.text];
+            textField2.text = [NSString stringWithFormat:@" %@-",num];
+            if(range.length > 0)
+                textField2.text = [NSString stringWithFormat:@" %@",[num substringToIndex:2]];
+        }
+        else if(length == 4) {
+            NSString *num = [self formatNumber:textField2.text];
+            textField2.text = [NSString stringWithFormat:@" %@-%@-",[num substringToIndex:2],[num substringFromIndex:2]];
+            if(range.length > 0)
+                textField2.text = [NSString stringWithFormat:@" %@-%@",[num substringToIndex:2],[num substringFromIndex:2]];
+        }
+        return YES;
+    }
+    return YES;
 }
 
 @end
