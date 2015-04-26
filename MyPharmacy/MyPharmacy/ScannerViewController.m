@@ -27,14 +27,13 @@
     BOOL _running;
     AVCaptureMetadataOutput *_metadataOutput;
     DatabaseManager * databaseManager;
-    UIAlertView *AddAlertView;
+    UIAlertView *AddAlertView,*message;
     UITextField *textField,*textField2;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupCaptureSession];
-    textField2.delegate =self;
     _previewLayer.frame = _previewView.bounds;
     [_previewView.layer addSublayer:_previewLayer];
     self.foundBarcodes = [[NSMutableArray alloc] init];
@@ -43,6 +42,15 @@
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
                                            action:@selector(hideKeyBoard)];
+    
+    AddAlertView = [[UIAlertView alloc]
+                    initWithTitle:@"Attention"
+                    message:@"Please enter quantity and expiration date"
+                    delegate:self
+                    cancelButtonTitle:@"Cancel"
+                    otherButtonTitles:@"Ok", nil];
+    AddAlertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
+
     
     [_previewView addGestureRecognizer:tapGesture];
     
@@ -216,13 +224,6 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
 //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"sideEffects" ]);
 //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"howToUse" ]);
 //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"overDose" ]);
-            AddAlertView = [[UIAlertView alloc]
-                                      initWithTitle:@"Attention"
-                                      message:@"Please enter quantity and expiration date"
-                                      delegate:self
-                                      cancelButtonTitle:@"Cancel"
-                                      otherButtonTitles:@"Ok", nil];
-            AddAlertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
             textField = [AddAlertView textFieldAtIndex:0];
             textField2 = [AddAlertView textFieldAtIndex:1];
             
@@ -236,39 +237,26 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
                 [AddAlertView show];
             });
         }else{
-            
+            message = [[UIAlertView alloc] initWithTitle:@"Barcode not found!"
+                                                              message:@"Do you want to adding tablet with hands?"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Scan again"
+                                                    otherButtonTitles:@"Yes",nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [message show];
+                
+            });
         }
         [databaseManager close];
-        
-        NSString * alertMessage = @"You found a barcode with type ";
-        alertMessage = [alertMessage stringByAppendingString:[barcode getBarcodeType]];
-        alertMessage = [alertMessage stringByAppendingString:@" and data "] ;
-        alertMessage = [alertMessage stringByAppendingString:[barcode getBarcodeData]];
-
-        alertMessage = [alertMessage stringByAppendingString:@"\n\nBarcode added to array of "];
-        alertMessage = [alertMessage stringByAppendingString:[NSString stringWithFormat:@"%lu",(unsigned long)[self.foundBarcodes count]-1]];
-        alertMessage = [alertMessage stringByAppendingString:@" previously found barcodes."];
-        
-//        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Barcode Found!"
-//                                                          message:alertMessage
-//                                                         delegate:self
-//                                                cancelButtonTitle:@"Done"
-//                                                otherButtonTitles:@"Scan again",nil];
-        
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Code to update the UI/send notifications based on the results of the background processing
-//            [message show];
-
-        });
     });
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 0){
         if (alertView == AddAlertView){
-            
-        }else{
-        
+              [self startRunning];
+        }else if (alertView == message){
+            [self startRunning];
         }
     }
     if(buttonIndex == 1){
@@ -277,54 +265,28 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
                 NSString *day = [textField2.text substringWithRange:NSMakeRange(0,2)];
                 NSString *month = [textField2.text substringWithRange:NSMakeRange(3,2)];
                 NSString *year = [textField2.text substringWithRange:NSMakeRange(6,4)];
+                NSLog(@"%@ %@ %@",day,month,year);
                 if ([day intValue]>31 || [month intValue]>12 || [year intValue]<2015){
-//                    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"The date is not correct" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-//                    [alert show];
-//                    CABasicAnimation *move = [CABasicAnimation animationWithKeyPath:@"transform.translation.x" ];
-//                    [move setFromValue:[NSNumber numberWithFloat:0.0f]];
-//                    [move setToValue:[NSNurmber numberWithFloat:100.0f]];
-//                    [move setDuration:1.0f];
-//                    //Add animation to a specific element's layer. Must be called after the element is displayed.
-//                    [[AddAlertView layer] addAnimation:move forKey:@"transform.translation.x"];
-                    
-//                    [AddAlertView animationDidStart:animation];
-
                     textField2.layer.cornerRadius=8.0f;
                     textField2.layer.masksToBounds=YES;
                     textField2.layer.borderColor=[[UIColor redColor]CGColor];
                     textField2.layer.borderWidth= 1.0f;
                     [AddAlertView show];
-//                    CGRect napkinTopFrame = AddAlertView.frame;
-//                    napkinTopFrame.origin.y = -napkinTopFrame.size.height;
-//                    CGRect napkinBottomFrame = AddAlertView.frame;
-//                    napkinBottomFrame.origin.y = AddAlertView.bounds.size.height;
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        [UIView animateWithDuration:1
-//                                              delay:1.5
-//                                            options: UIViewAnimationCurveEaseIn
-//                                         animations:^{
-//                                             AddAlertView.frame = napkinTopFrame;
-//                                             AddAlertView.frame = napkinBottomFrame;
-//                                         }
-//                                         completion:^(BOOL finished){
-//                                             NSLog(@"Done!");
-//                                         }];
-//                    });
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                            [AddAlertView show];
+                    });
                     textField2.text=@"";
                     [textField2 setPlaceholder:@"01-01-2015"];
                 }else{
 //                        NSUSERDEFAULT
                 
                 }
-            }else{
-                    NSLog(@"asdasd");
             }
-        }else{
-            [self startRunning];
+        }else if(alertView == message){
+            [self performSegueWithIdentifier:@"addHands" sender:self];
         }
     }
 }
-
 #pragma MASKA TELEPHON
 -(NSString*)formatNumber:(NSString*)mobileNumber
 {
@@ -373,15 +335,15 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
         
         if(length == 2) {
             NSString *num = [self formatNumber:textField2.text];
-            textField2.text = [NSString stringWithFormat:@" %@-",num];
+            textField2.text = [NSString stringWithFormat:@"%@-",num];
             if(range.length > 0)
-                textField2.text = [NSString stringWithFormat:@" %@",[num substringToIndex:2]];
+                textField2.text = [NSString stringWithFormat:@"%@",[num substringToIndex:2]];
         }
         else if(length == 4) {
             NSString *num = [self formatNumber:textField2.text];
-            textField2.text = [NSString stringWithFormat:@" %@-%@-",[num substringToIndex:2],[num substringFromIndex:2]];
+            textField2.text = [NSString stringWithFormat:@"%@-%@-",[num substringToIndex:2],[num substringFromIndex:2]];
             if(range.length > 0)
-                textField2.text = [NSString stringWithFormat:@" %@-%@",[num substringToIndex:2],[num substringFromIndex:2]];
+                textField2.text = [NSString stringWithFormat:@"%@-%@",[num substringToIndex:2],[num substringFromIndex:2]];
         }
         return YES;
     }

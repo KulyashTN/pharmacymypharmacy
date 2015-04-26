@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UxQ-5q-LS5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UxQ-5q-LS5">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="FontAwesome.otf">
@@ -134,6 +134,7 @@
                     <connections>
                         <outlet property="barCodeTextField" destination="w3k-ZQ-fIW" id="pay-S8-gG3"/>
                         <outlet property="previewView" destination="UMb-Bf-E8a" id="4LK-UD-ByL"/>
+                        <segue destination="8ds-oR-AiQ" kind="show" identifier="addHands" id="E1g-8f-van"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHF-jC-9fk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -178,12 +179,6 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6m-0i-CSh">
-                                        <rect key="frame" x="18" y="228" width="88" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="01-01-2015" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R7n-PV-z4l">
                                         <rect key="frame" x="142" y="125" width="162" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -194,12 +189,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IqC-Tl-E8V">
-                                        <rect key="frame" x="18" y="257" width="286" height="233"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O24-aB-n6y">
                                         <rect key="frame" x="129" y="659" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -239,16 +228,16 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="descTextAria" destination="IqC-Tl-E8V" id="zK8-jy-4gn"/>
                         <outlet property="expDateTextField" destination="R7n-PV-z4l" id="sHZ-eo-Uem"/>
                         <outlet property="nameTextField" destination="JhY-Q2-K5x" id="wmv-J7-7J8"/>
                         <outlet property="quantityTextField" destination="uZd-DV-359" id="5TU-5y-THf"/>
                         <outlet property="scroll" destination="2PF-UI-UDI" id="c0L-gM-v68"/>
+                        <segue destination="Rc4-sj-brW" kind="show" identifier="back" id="X5o-2k-BeN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEe-mZ-2uT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-426" y="927"/>
+            <point key="canvasLocation" x="-434" y="963"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="pjs-Ed-2mK">
@@ -706,6 +695,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Ozn-rn-4Sq"/>
         <segue reference="vnP-wB-jwg"/>
-        <segue reference="wRi-o1-HKX"/>
+        <segue reference="X5o-2k-BeN"/>
+        <segue reference="E1g-8f-van"/>
     </inferredMetricsTieBreakers>
 </document>
