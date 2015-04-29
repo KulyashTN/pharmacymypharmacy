@@ -12,5 +12,6 @@
 @property (strong, nonatomic) NSMutableArray * allowedBarcodeTypes;
 @property (weak, nonatomic) IBOutlet UITextField *barCodeTextField;
 @property (strong, nonatomic) NSString *databasePath;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic) sqlite3 *contactDB;
 @end

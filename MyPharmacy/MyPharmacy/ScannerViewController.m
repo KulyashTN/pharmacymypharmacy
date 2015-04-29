@@ -13,7 +13,7 @@
 @import AVFoundation;   // iOS7 only import style
 
 @interface ScannerViewController ()
-
+@property(strong, nonatomic) NSMutableArray * tablets;
 @property (strong, nonatomic) NSMutableArray * foundBarcodes;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 
@@ -28,11 +28,26 @@
     AVCaptureMetadataOutput *_metadataOutput;
     DatabaseManager * databaseManager;
     UIAlertView *AddAlertView,*message;
-    UITextField *textField,*textField2;
+    UITextField *textField1,*textField2;
+    NSString* nameTablet;
+    NSMutableDictionary *dataDict;
+}
+
+-(NSMutableArray *)tablets{
+    if (!_tablets){
+        _tablets= [[[NSUserDefaults standardUserDefaults] objectForKey:@"myPharmacyKey"] mutableCopy];
+    }
+    if (!_tablets)  _tablets = [[NSMutableArray alloc]init];
+    return _tablets;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    dataDict = [[NSMutableDictionary alloc]init];
+    self.datePicker.hidden = YES;
+    
+    textField2.delegate = self;
+    
     [self setupCaptureSession];
     _previewLayer.frame = _previewView.bounds;
     [_previewView.layer addSublayer:_previewLayer];
@@ -51,7 +66,7 @@
                     otherButtonTitles:@"Ok", nil];
     AddAlertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
 
-    
+    [_previewView addSubview:AddAlertView];
     [_previewView addGestureRecognizer:tapGesture];
     
     // listen for going into the background and stop the session
@@ -86,17 +101,72 @@
 
 -(void)hideKeyBoard {
     [self.barCodeTextField resignFirstResponder];
+    self.datePicker.hidden = YES;
+    [textField1 resignFirstResponder];
+    [textField2 resignFirstResponder];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self startRunning];
 }
-
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if (textField == textField2) {
+        [textField2 resignFirstResponder];
+        self.datePicker.hidden = NO;
+    }else if (textField == self.barCodeTextField){
+        [self stopRunning];
+    }
+    return YES;
+}
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.barCodeTextField) {
+        self.datePicker.hidden = NO;
         if ([self.barCodeTextField.text length]>0){
-    
+            dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                // Code to do in background processing
+                
+                NSArray * array = [databaseManager findeCity:[NSString stringWithFormat:@"%@",self.barCodeTextField.text]];
+                NSLog(@"%lu",(unsigned long)[array count]);
+                if ([array count]>0){
+                    //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"title" ]);
+                    //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"uses" ]);
+                    //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"contraindications" ]);
+                    //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"sideEffects" ]);
+                    //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"howToUse" ]);
+                    //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"overDose" ]);
+                    textField1 = [AddAlertView textFieldAtIndex:0];
+                    textField2 = [AddAlertView textFieldAtIndex:1];
+                    textField2.secureTextEntry = NO;
+                    
+                    NSDateFormatter *dateformate=[[NSDateFormatter alloc]init];
+                    [dateformate setDateFormat:@"dd MMM YYYY"];
+                    NSString *date_String=[dateformate stringFromDate:[NSDate date]];
+                    self.datePicker.minimumDate = [NSDate dateWithTimeIntervalSinceNow:0];
+                    textField2.text = date_String;
+                    
+                    [self.datePicker removeFromSuperview];
+                    textField2.inputView = self.datePicker;
+                    
+                    textField1.placeholder = @"enter quanity of tablet";
+                    textField1.keyboardType = UIKeyboardTypeNumberPad;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [AddAlertView show];
+                    });
+                }else{
+                    message = [[UIAlertView alloc] initWithTitle:@"Barcode not found!"
+                                                         message:@"Please, try to write barcode by yourself"
+                                                        delegate:self
+                                               cancelButtonTitle:@"Ok"
+                                                otherButtonTitles:nil];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [message show];
+                        
+                    });
+                }
+                [databaseManager close];
+            });
         }else{
             [self hideKeyBoard];
         }
@@ -218,30 +288,36 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
         NSArray * array = [databaseManager findeCity:[NSString stringWithFormat:@"%@",[barcode getBarcodeData]]];
         NSLog(@"%lu",(unsigned long)[array count]);
         if ([array count]>0){
-//        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"title" ]);
-//        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"uses" ]);
-//        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"contraindications" ]);
-//        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"sideEffects" ]);
-//        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"howToUse" ]);
-//        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"overDose" ]);
-            textField = [AddAlertView textFieldAtIndex:0];
+            nameTablet = [NSString stringWithFormat:@"%@",[[array objectAtIndex:0]valueForKey:@"title" ]];
+//                    NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"uses" ]);
+//                    NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"contraindications" ]);
+//                    NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"sideEffects" ]);
+//                    NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"howToUse" ]);
+//                    NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"overDose" ]);
+            textField1 = [AddAlertView textFieldAtIndex:0];
             textField2 = [AddAlertView textFieldAtIndex:1];
-            
             textField2.delegate=self;
             textField2.secureTextEntry = NO;
-            textField.placeholder = @"enter number";
-            textField2.placeholder = @"01-01-2015";
-            textField.keyboardType = UIKeyboardTypeNumberPad;
-            textField2.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            
+            NSDateFormatter *dateformate=[[NSDateFormatter alloc]init];
+            [dateformate setDateFormat:@"dd MMM YYYY"];
+            NSString *date_String=[dateformate stringFromDate:[NSDate date]];
+            self.datePicker.minimumDate = [NSDate dateWithTimeIntervalSinceNow:0];
+            textField2.text = date_String;
+            
+            [self.datePicker removeFromSuperview];
+            textField2.inputView = self.datePicker;
+            textField1.placeholder = @"enter quanity of tablet";
+            textField1.keyboardType = UIKeyboardTypeNumberPad;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [AddAlertView show];
             });
         }else{
             message = [[UIAlertView alloc] initWithTitle:@"Barcode not found!"
-                                                              message:@"Do you want to adding tablet with hands?"
-                                                             delegate:self
-                                                    cancelButtonTitle:@"Scan again"
-                                                    otherButtonTitles:@"Yes",nil];
+                                                 message:@"Please, try to write barcode by yourself"
+                                                delegate:self
+                                       cancelButtonTitle:@"Ok"
+                                       otherButtonTitles:nil];
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 [message show];
@@ -251,105 +327,41 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
         [databaseManager close];
     });
 }
+
+-(BOOL) alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+{
+    return [[alertView textFieldAtIndex:0].text length] > 0;
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 0){
         if (alertView == AddAlertView){
-              [self startRunning];
-        }else if (alertView == message){
-            [self startRunning];
+            [self performSegueWithIdentifier:@"back" sender:self];
         }
     }
     if(buttonIndex == 1){
         if (alertView == AddAlertView){
-            if ([textField2.text length]==10){
-                NSString *day = [textField2.text substringWithRange:NSMakeRange(0,2)];
-                NSString *month = [textField2.text substringWithRange:NSMakeRange(3,2)];
-                NSString *year = [textField2.text substringWithRange:NSMakeRange(6,4)];
-                NSLog(@"%@ %@ %@",day,month,year);
-                if ([day intValue]>31 || [month intValue]>12 || [year intValue]<2015){
-                    textField2.layer.cornerRadius=8.0f;
-                    textField2.layer.masksToBounds=YES;
-                    textField2.layer.borderColor=[[UIColor redColor]CGColor];
-                    textField2.layer.borderWidth= 1.0f;
-                    [AddAlertView show];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                            [AddAlertView show];
-                    });
-                    textField2.text=@"";
-                    [textField2 setPlaceholder:@"01-01-2015"];
-                }else{
-//                        NSUSERDEFAULT
-                
-                }
+            if ([textField1.text length]==0){
+                textField1.text=@"";
+                textField1.layer.cornerRadius=8.0f;
+                textField1.layer.masksToBounds=YES;
+                textField1.layer.borderColor=[[UIColor redColor]CGColor];
+                textField1.layer.borderWidth= 1.0f;
+                [AddAlertView show];
+            }else{
+                [self hideKeyBoard];
+                NSString* quantityTablet = textField1.text;
+                NSString *dateString = textField2.text;
+                [dataDict setObject:nameTablet forKey:@"nameOfTablet"];
+                [dataDict setObject:quantityTablet forKey:@"qualityOfTablet"];
+                [dataDict setObject:dateString forKey:@"expOfDate"];
+                [self.tablets addObject:dataDict];
+                [[NSUserDefaults standardUserDefaults] setObject:self.tablets forKey:@"myPharmacyKey"];
+                [self performSegueWithIdentifier:@"back" sender:self];
             }
-        }else if(alertView == message){
-            [self performSegueWithIdentifier:@"addHands" sender:self];
         }
     }
 }
-#pragma MASKA TELEPHON
--(NSString*)formatNumber:(NSString*)mobileNumber
-{
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"(" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@")" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"+" withString:@""];
-    int length = (int)[mobileNumber length];
-    if(length > 4) {
-        mobileNumber = [mobileNumber substringFromIndex: length-4];
-    }
-    return mobileNumber;
-}
-
--(int)getLength:(NSString*)mobileNumber
-{
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"(" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@")" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"+" withString:@""];
-    
-    int length = (int)[mobileNumber length];
-    return length;
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    if(textField == textField2){
-        NSString *nameRegex = @"[0-9]+";
-        NSPredicate *nameTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", nameRegex];
-        if (string.length==0) {
-            return YES;
-        }
-        else if(![nameTest evaluateWithObject:string]){
-            return NO;
-        }
-        
-        int length = [self getLength:textField2.text];
-        
-        if(length == 8) {
-            if(range.length == 0)
-                return NO;
-        }
-        
-        if(length == 2) {
-            NSString *num = [self formatNumber:textField2.text];
-            textField2.text = [NSString stringWithFormat:@"%@-",num];
-            if(range.length > 0)
-                textField2.text = [NSString stringWithFormat:@"%@",[num substringToIndex:2]];
-        }
-        else if(length == 4) {
-            NSString *num = [self formatNumber:textField2.text];
-            textField2.text = [NSString stringWithFormat:@"%@-%@-",[num substringToIndex:2],[num substringFromIndex:2]];
-            if(range.length > 0)
-                textField2.text = [NSString stringWithFormat:@"%@-%@",[num substringToIndex:2],[num substringFromIndex:2]];
-        }
-        return YES;
-    }
-    return YES;
-}
-
 @end
 
 

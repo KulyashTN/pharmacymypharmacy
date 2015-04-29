@@ -7,7 +7,7 @@
 //
 
 #import "AddByHandsViewController.h"
-
+#import "DatabaseManager.h"
 @interface AddByHandsViewController ()
 @property(strong, nonatomic) NSMutableArray * tablets;
 @end
@@ -33,60 +33,89 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(hideKeyBoard)];
+    
+    [self.view addGestureRecognizer:tapGesture];
     dataDict = [[NSMutableDictionary alloc]init];
+    self.nameTextField.placeholder = @"Name of tablet";
+    self.quantityTextField.placeholder = @"Quantity of tablet";
+    
+    NSDateFormatter *dateformate=[[NSDateFormatter alloc]init];
+    [dateformate setDateFormat:@"dd MMM YYYY"];
+    NSString *date_String=[dateformate stringFromDate:[NSDate date]];
+    self.datePicker.minimumDate = [NSDate dateWithTimeIntervalSinceNow:0];
+    self.expDateTextField.text = date_String;
+    
+    
     self.expDateTextField.delegate = self;
+    [self.datePicker removeFromSuperview];
+    self.expDateTextField.inputView = self.datePicker;
+    
+    self.datePicker.hidden = YES;
     if(self.dic!=nil){
         [self method:self.dic];
         come=YES;
     }else{
         come=NO;
     }
-    
-    
 }
+
+
+-(void)hideKeyBoard {
+    [self.expDateTextField resignFirstResponder];
+    self.datePicker.hidden = YES;
+    [self.nameTextField resignFirstResponder];
+    [self.quantityTextField resignFirstResponder];
+}
+
+- (IBAction)clickToPicker:(id)sender {
+    NSDate *date = self.datePicker.date;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:@"dd/MM/YYYY"];
+    [dateFormat setDateStyle:NSDateFormatterMediumStyle];
+    self.expDateTextField.text = [dateFormat stringFromDate:date];
+}
+
 
 - (void)viewDidLayoutSubviews
 {
-    [self.scroll setContentSize:CGSizeMake(320, 1000)];
+    [self.scroll setContentSize:CGSizeMake(320, 1100)];
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if (textField == self.expDateTextField) {
+        [self.expDateTextField resignFirstResponder];
+        self.datePicker.hidden = NO;
     }
     return YES;
 }
--(BOOL)allCheck{
-    NSLog(@"+%@+",self.quantityTextField.text);
-    if ([self.nameTextField.text length]==0){
-        [self checkFunc:1];
-        return NO;
-    }else if ([self.expDateTextField.text length]<10){
-        [self checkFunc:2];
-        return NO;
-    }else if ([self.expDateTextField.text length]==10){
-        NSString *day = [self.expDateTextField.text substringWithRange:NSMakeRange(0,2)];
-        NSString *month = [self.expDateTextField.text substringWithRange:NSMakeRange(3,2)];
-        NSString *year = [self.expDateTextField.text substringWithRange:NSMakeRange(6,4)];
-        if ([day intValue]<=0 || [day intValue]>31 || [month intValue]<=0 ||[month intValue]>12 || [year intValue]<2015){
-            [self checkFunc:2];
-            return NO;
-        }
-    }else if ([self.quantityTextField.text length]==0){
-        NSLog(@"asdasd");
-        [self checkFunc:3];
-        return NO;
-    }else{
-        return YES;
-    }
-    return NO;
-}
+
 - (IBAction)doneActionButton:(id)sender {
-    NSString* nameTablet = self.nameTextField.text;
-    NSString* qualityTablet = self.quantityTextField.text;
-    NSString *dateString = self.expDateTextField.text;
-    NSLog(@"%d",[self.quantityTextField.text length]);
-    BOOL check = [self allCheck];
-    NSLog(@"%@",check);
-    if (check){
+    UIAlertView *errorAlert = [[UIAlertView alloc]init];
+    errorAlert.message =@"";
+    errorAlert.title = @"Error";
+    [errorAlert addButtonWithTitle:@"OK"];
+    NSMutableString *errorMessage = [[NSMutableString alloc]init];
+    if ([self.nameTextField.text length]==0 || [self.quantityTextField.text length]==0){
+        if ([self.nameTextField.text length]==0){
+            [errorMessage appendString:@"Name not can be empty\n"];
+            [self errorText:self.nameTextField];
+        }else{
+            [self correctText:self.nameTextField];
+        }
+        if ([self.quantityTextField.text length]==0){
+            [errorMessage appendString:@"Quantity not can be empty"];
+            [self errorText:self.quantityTextField];
+        }else{
+            [self correctText:self.quantityTextField];
+        }
+        errorAlert.message = errorMessage;
+        [errorAlert show];
+    }else{
+        NSString* nameTablet = self.nameTextField.text;
+        NSString* qualityTablet = self.quantityTextField.text;
+        NSString *dateString = self.expDateTextField.text;
         [dataDict setObject:nameTablet forKey:@"nameOfTablet"];
         [dataDict setObject:qualityTablet forKey:@"qualityOfTablet"];
         [dataDict setObject:dateString forKey:@"expOfDate"];
@@ -98,110 +127,25 @@
         }
         [[NSUserDefaults standardUserDefaults] setObject:self.tablets forKey:@"myPharmacyKey"];
         [self performSegueWithIdentifier:@"back" sender:self];
-    }else{
-//        [self checkFunc:5];
+        
     }
 }
-
--(void)checkFunc:(int)checkInt{
-    NSString *checkString = [[NSString alloc]init];
-    if (checkInt==1){
-        checkString = @"Name not can be empty";
-        self.nameTextField.text=@"";
-        self.nameTextField.layer.cornerRadius=8.0f;
-        self.nameTextField.layer.masksToBounds=YES;
-        self.nameTextField.layer.borderColor=[[UIColor redColor]CGColor];
-        self.nameTextField.layer.borderWidth= 1.0f;
-    }else if (checkInt==2){
-        checkString = @"The date is not correct";
-        self.expDateTextField.text=@"";
-        [self.expDateTextField setPlaceholder:@"01-01-2015"];
-        self.expDateTextField.layer.cornerRadius=8.0f;
-        self.expDateTextField.layer.masksToBounds=YES;
-        self.expDateTextField.layer.borderColor=[[UIColor redColor]CGColor];
-        self.expDateTextField.layer.borderWidth= 1.0f;
-    }else if (checkInt==3){
-        checkString = @"Quantity not can be empty";
-        self.quantityTextField.text=@"";
-        self.quantityTextField.layer.cornerRadius=8.0f;
-        self.quantityTextField.layer.masksToBounds=YES;
-        self.quantityTextField.layer.borderColor=[[UIColor redColor]CGColor];
-        self.quantityTextField.layer.borderWidth= 1.0f;
-    }else{
-        checkString = @"Smth is wrong";
-    }
-    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Error" message:[NSString stringWithFormat:@"%@",checkString] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-
-    [alert show];
+-(void)errorText:(UITextField*)text1{
+    text1.text=@"";
+    text1.layer.cornerRadius=8.0f;
+    text1.layer.masksToBounds=YES;
+    text1.layer.borderColor=[[UIColor redColor]CGColor];
+    text1.layer.borderWidth= 1.0f;
 }
 
+-(void)correctText:(UITextField*)text1{
+    text1.layer.cornerRadius=8.0f;
+    text1.layer.masksToBounds=NO;
+    text1.layer.borderColor=[[UIColor clearColor]CGColor];
+    text1.layer.borderWidth= 1.0f;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
-#pragma MASKA TELEPHON
--(NSString*)formatNumber:(NSString*)mobileNumber
-{
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"(" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@")" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"+" withString:@""];
-    int length = (int)[mobileNumber length];
-    if(length > 4) {
-        mobileNumber = [mobileNumber substringFromIndex: length-4];
-    }
-    return mobileNumber;
-}
-
--(int)getLength:(NSString*)mobileNumber
-{
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"(" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@")" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"+" withString:@""];
-    
-    int length = (int)[mobileNumber length];
-    return length;
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    if(textField == self.expDateTextField){
-        NSString *nameRegex = @"[0-9]+";
-        NSPredicate *nameTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", nameRegex];
-        if (string.length==0) {
-            return YES;
-        }
-        else if(![nameTest evaluateWithObject:string]){
-            return NO;
-        }
-        
-        int length = [self getLength:self.expDateTextField.text];
-        
-        if(length == 8) {
-            if(range.length == 0)
-                return NO;
-        }
-        
-        if(length == 2) {
-            NSString *num = [self formatNumber:self.expDateTextField.text];
-            self.expDateTextField.text = [NSString stringWithFormat:@"%@-",num];
-            if(range.length > 0)
-                self.expDateTextField.text = [NSString stringWithFormat:@"%@",[num substringToIndex:2]];
-        }
-        else if(length == 4) {
-            NSString *num = [self formatNumber:self.expDateTextField.text];
-            self.expDateTextField.text = [NSString stringWithFormat:@"%@-%@-",[num substringToIndex:2],[num substringFromIndex:2]];
-            if(range.length > 0)
-                self.expDateTextField.text = [NSString stringWithFormat:@"%@-%@",[num substringToIndex:2],[num substringFromIndex:2]];
-        }
-        return YES;
-    }
-    return YES;
-}
-
-
 @end
