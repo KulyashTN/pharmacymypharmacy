@@ -115,26 +115,18 @@
         [textField2 resignFirstResponder];
         self.datePicker.hidden = NO;
     }else if (textField == self.barCodeTextField){
-        [self stopRunning];
+//        [self stopRunning];
     }
     return YES;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.barCodeTextField) {
-        self.datePicker.hidden = NO;
         if ([self.barCodeTextField.text length]>0){
             dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 // Code to do in background processing
-                
                 NSArray * array = [databaseManager findeCity:[NSString stringWithFormat:@"%@",self.barCodeTextField.text]];
                 NSLog(@"%lu",(unsigned long)[array count]);
                 if ([array count]>0){
-                    //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"title" ]);
-                    //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"uses" ]);
-                    //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"contraindications" ]);
-                    //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"sideEffects" ]);
-                    //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"howToUse" ]);
-                    //        NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"overDose" ]);
                     textField1 = [AddAlertView textFieldAtIndex:0];
                     textField2 = [AddAlertView textFieldAtIndex:1];
                     textField2.secureTextEntry = NO;
@@ -170,7 +162,7 @@
         }else{
             [self hideKeyBoard];
         }
-        return NO;
+        return YES;
     }
     return YES;
 }
@@ -289,11 +281,6 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
         NSLog(@"%lu",(unsigned long)[array count]);
         if ([array count]>0){
             nameTablet = [NSString stringWithFormat:@"%@",[[array objectAtIndex:0]valueForKey:@"title" ]];
-//                    NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"uses" ]);
-//                    NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"contraindications" ]);
-//                    NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"sideEffects" ]);
-//                    NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"howToUse" ]);
-//                    NSLog(@"%@",[[array objectAtIndex:0]valueForKey:@"overDose" ]);
             textField1 = [AddAlertView textFieldAtIndex:0];
             textField2 = [AddAlertView textFieldAtIndex:1];
             textField2.delegate=self;
@@ -329,7 +316,7 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
 }
 
 -(BOOL) alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
-{
+{   
     return [[alertView textFieldAtIndex:0].text length] > 0;
 }
 

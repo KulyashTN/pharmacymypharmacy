@@ -8,6 +8,7 @@
 
 #import "AddByHandsViewController.h"
 #import "DatabaseManager.h"
+#import "UIBorderLabel.h"
 @interface AddByHandsViewController ()
 @property(strong, nonatomic) NSMutableArray * tablets;
 @end
@@ -16,6 +17,10 @@
     NSMutableDictionary *dataDict;
     BOOL come;
     DatabaseManager * databaseManager;
+    UIBorderLabel *use,*contr,*sideEf,*hTu,*ovDose;
+    UILabel *use1,*contr1,*sideEf1,*hTu1,*ovDose1;
+    int setSave;
+    CGFloat topInset,leftInset,bottomInset,rightInset;
 }
 
 -(NSMutableArray *)tablets{
@@ -30,27 +35,32 @@
     self.nameTextField.text=[d objectForKey:@"nameOfTablet"];
     self.quantityTextField.text=[d objectForKey:@"qualityOfTablet"];
     self.expDateTextField.text=[d objectForKey:@"expOfDate"];
-    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         NSArray * array = [databaseManager findeName:[NSString stringWithFormat:@"%@",self.nameTextField.text]];
         if ([array count]>0){
-            self.uses.text = [NSString stringWithFormat:@"%@",[[array objectAtIndex:0]valueForKey:@"uses" ]];
-            self.contraindication.text =[NSString stringWithFormat:@"%@",[[array objectAtIndex:0]valueForKey:@"contraindications" ]];
-            self.sideEffects.text =[NSString stringWithFormat:@"%@",[[array objectAtIndex:0]valueForKey:@"sideEffects" ]];
-            self.howToUse.text =[NSString stringWithFormat:@"%@",[[array objectAtIndex:0]valueForKey:@"howToUse" ]];
-            self.overDose.text =[NSString stringWithFormat:@"%@",[[array objectAtIndex:0]valueForKey:@"overDose" ]];
-        }else{
-            [self hideLabel];
+            for (int i=0;i<5; i++){
+                if (i==0){
+                    [self settingToLabel:use withArray:array withInt:i];
+                }else if (i==1){
+                    [self settingToLabel:contr withArray:array withInt:i];
+                }else if (i==2){
+                    [self settingToLabel:sideEf withArray:array withInt:i];
+                }else if (i==3){
+                    [self settingToLabel:hTu withArray:array withInt:i];
+                }else if (i==4){
+                    [self settingToLabel:ovDose withArray:array withInt:i];
+                }
+            }
         }
         [databaseManager close];
     });
-    
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     databaseManager = [[DatabaseManager alloc] init];
 
-    
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
                                            action:@selector(hideKeyBoard)];
@@ -68,34 +78,97 @@
     self.expDateTextField.delegate = self;
     [self.datePicker removeFromSuperview];
     self.expDateTextField.inputView = self.datePicker;
+}
+
+-(void)settingToLabel:(UIBorderLabel*)setLabel withArray:(NSArray*)ar withInt:(int)p{
+    setLabel.font = [UIFont systemFontOfSize:13];
+    if (setLabel == use){
+        setLabel.text = [NSString stringWithFormat:@"%@",[[ar objectAtIndex:0]valueForKey:@"uses" ]];
+    }else if(setLabel == contr){
+        setLabel.text= [NSString stringWithFormat:@"%@",[[ar objectAtIndex:0]valueForKey:@"contraindications" ]];
+    }else if (setLabel == sideEf){
+        setLabel.text = [NSString stringWithFormat:@"%@",[[ar objectAtIndex:0]valueForKey:@"sideEffects" ]];
+    }else if (setLabel == hTu){
+        setLabel.text = [NSString stringWithFormat:@"%@",[[ar objectAtIndex:0]valueForKey:@"howToUse" ]];
+    }else if (setLabel == ovDose){
+        setLabel.text = [NSString stringWithFormat:@"%@",[[ar objectAtIndex:0]valueForKey:@"overDose" ]];
+    }
+    setLabel.numberOfLines = 0;
+    setLabel.backgroundColor = [UIColor clearColor];
+    setLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    CGSize maximumLabelSize = CGSizeMake(229, 9999);
+    CGSize expectSize = [setLabel sizeThatFits:maximumLabelSize];
+    if (p==0){
+        setLabel.frame = CGRectMake(10, 250, 300, expectSize.height);
+        [self setLabel:use1 withInteger:250+setSave-20];
+    }else{
+        setLabel.frame = CGRectMake(10, 250 + setSave, 300, expectSize.height);
+        if (p==1){
+            [self setLabel:contr1 withInteger:250+setSave-90];
+        }else if (p==2){
+            [self setLabel:sideEf1 withInteger:250+setSave-90];
+        }else if (p==3){
+            [self setLabel:hTu1 withInteger:250+setSave-90];
+        }else if (p==4){
+            [self setLabel:ovDose1 withInteger:250+setSave-90];
+        }
+    }
+    setLabel.topInset = 10;
+    setLabel.leftInset = 15;
+    setLabel.bottomInset = 10;
+    setLabel.rightInset = 15;
+    setLabel.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    setLabel.layer.borderWidth = 1.0;
+    setSave += expectSize.height + 50;
+    [self.scroll addSubview:setLabel];
+}
+
+-(void)setLabel:(UILabel*)label withInteger:(int)width{
+    label.font = [UIFont systemFontOfSize:17];
+    int k=0;
+    if (label == use1){
+        label.text = @"Uses:";
+        k++;
+    }else if(label == contr1){
+        label.text= @"Contraindications:";
+    }else if (label == sideEf1){
+        label.text= @"Side effects:";
+    }else if (label == hTu1){
+        label.text= @"How to use:";
+    }else if (label == ovDose1){
+        label.text= @"Over dose:";
+    }
+    CGSize maximumLabelSize = CGSizeMake(30, 20);
+    CGSize expectSize = [label sizeThatFits:maximumLabelSize];
+    if (k!=0){
+        label.frame = CGRectMake(10, 225, expectSize.width, expectSize.height);
+    }else{
+        label.frame = CGRectMake(10, 230+width-165, expectSize.width, expectSize.height);
+    }
+    [self.scroll addSubview:label];
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    use = [[UIBorderLabel alloc] init];
+    contr = [[UIBorderLabel alloc]init];
+    sideEf = [[UIBorderLabel alloc]init];
+    hTu = [[UIBorderLabel alloc]init];
+    ovDose = [[UIBorderLabel alloc]init];
+    
+    use1 = [[UILabel alloc] init];
+    contr1 = [[UILabel alloc]init];
+    sideEf1 = [[UILabel alloc]init];
+    hTu1 = [[UILabel alloc]init];
+    ovDose1 = [[UILabel alloc]init];
     
     self.datePicker.hidden = YES;
     if(self.dic!=nil){
         [self method:self.dic];
         come=YES;
     }else{
-        [self hideLabel];
         come=NO;
     }
-    NSLog(@"%d",come);
-}
-
--(void)hideLabel{
-    self.uses.hidden = YES;
-    self.uses1.hidden = YES;
-    self.contraindication.hidden = YES;
-    self.contraindication1.hidden = YES;
-    self.sideEffects.hidden = YES;
-    self.sideEffects1.hidden = YES;
-    self.howToUse.hidden = YES;
-    self.howToUse1.hidden = YES;
-    self.overDose.hidden = YES;
-    self.overDose1.hidden = YES;
-    self.scroll.scrollEnabled = NO;
-}
-
--(void)viewWillAppear:(BOOL)animated{
-
 }
 
 -(void)hideKeyBoard {
@@ -114,7 +187,7 @@
 }
 
 - (void)viewDidLayoutSubviews{
-    [self.scroll setContentSize:CGSizeMake(320, 1100)];
+    [self.scroll setContentSize:CGSizeMake(320, setSave + 300)];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
