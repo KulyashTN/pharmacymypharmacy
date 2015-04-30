@@ -15,6 +15,7 @@
 @implementation AddByHandsViewController{
     NSMutableDictionary *dataDict;
     BOOL come;
+    DatabaseManager * databaseManager;
 }
 
 -(NSMutableArray *)tablets{
@@ -29,10 +30,27 @@
     self.nameTextField.text=[d objectForKey:@"nameOfTablet"];
     self.quantityTextField.text=[d objectForKey:@"qualityOfTablet"];
     self.expDateTextField.text=[d objectForKey:@"expOfDate"];
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSArray * array = [databaseManager findeName:[NSString stringWithFormat:@"%@",self.nameTextField.text]];
+        if ([array count]>0){
+            self.uses.text = [NSString stringWithFormat:@"%@",[[array objectAtIndex:0]valueForKey:@"uses" ]];
+            self.contraindication.text =[NSString stringWithFormat:@"%@",[[array objectAtIndex:0]valueForKey:@"contraindications" ]];
+            self.sideEffects.text =[NSString stringWithFormat:@"%@",[[array objectAtIndex:0]valueForKey:@"sideEffects" ]];
+            self.howToUse.text =[NSString stringWithFormat:@"%@",[[array objectAtIndex:0]valueForKey:@"howToUse" ]];
+            self.overDose.text =[NSString stringWithFormat:@"%@",[[array objectAtIndex:0]valueForKey:@"overDose" ]];
+        }else{
+            [self hideLabel];
+        }
+        [databaseManager close];
+    });
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    databaseManager = [[DatabaseManager alloc] init];
+
+    
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
                                            action:@selector(hideKeyBoard)];
@@ -47,8 +65,6 @@
     NSString *date_String=[dateformate stringFromDate:[NSDate date]];
     self.datePicker.minimumDate = [NSDate dateWithTimeIntervalSinceNow:0];
     self.expDateTextField.text = date_String;
-    
-    
     self.expDateTextField.delegate = self;
     [self.datePicker removeFromSuperview];
     self.expDateTextField.inputView = self.datePicker;
@@ -58,10 +74,29 @@
         [self method:self.dic];
         come=YES;
     }else{
+        [self hideLabel];
         come=NO;
     }
+    NSLog(@"%d",come);
 }
 
+-(void)hideLabel{
+    self.uses.hidden = YES;
+    self.uses1.hidden = YES;
+    self.contraindication.hidden = YES;
+    self.contraindication1.hidden = YES;
+    self.sideEffects.hidden = YES;
+    self.sideEffects1.hidden = YES;
+    self.howToUse.hidden = YES;
+    self.howToUse1.hidden = YES;
+    self.overDose.hidden = YES;
+    self.overDose1.hidden = YES;
+    self.scroll.scrollEnabled = NO;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+
+}
 
 -(void)hideKeyBoard {
     [self.expDateTextField resignFirstResponder];
@@ -78,11 +113,10 @@
     self.expDateTextField.text = [dateFormat stringFromDate:date];
 }
 
-
-- (void)viewDidLayoutSubviews
-{
+- (void)viewDidLayoutSubviews{
     [self.scroll setContentSize:CGSizeMake(320, 1100)];
 }
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if (textField == self.expDateTextField) {
         [self.expDateTextField resignFirstResponder];

@@ -77,4 +77,31 @@ static DatabaseManager *_database;
     }
     return retval;
 }
+-(NSArray *)findeName:(NSString*)string{
+    NSMutableArray *retval = [[NSMutableArray alloc] init];
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM drugTable where title = '%@'",string];
+    sqlite3_stmt *statement;
+    if (sqlite3_prepare_v2(_database, [query UTF8String], -1, &statement, nil)
+        == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            char *title = (char *) sqlite3_column_text(statement, 1);
+            char *uses = (char *) sqlite3_column_text(statement, 2);
+            char *contraindications = (char *) sqlite3_column_text(statement, 3);
+            char *sideEffects = (char *) sqlite3_column_text(statement, 4);
+            char *howToUse = (char *) sqlite3_column_text(statement, 5);
+            char *overDose = (char *) sqlite3_column_text(statement, 6);
+            NSMutableDictionary * tablets = [[NSMutableDictionary alloc] init];
+            [tablets setObject:[[NSString alloc] initWithUTF8String:title] forKey:@"title"];
+            [tablets setObject:[[NSString alloc] initWithUTF8String:uses] forKey:@"uses"];
+            [tablets setObject:[[NSString alloc] initWithUTF8String:contraindications] forKey:@"contraindications"];
+            [tablets setObject:[[NSString alloc] initWithUTF8String:sideEffects] forKey:@"sideEffects"];
+            [tablets setObject:[[NSString alloc] initWithUTF8String:howToUse] forKey:@"howToUse"];
+            [tablets setObject:[[NSString alloc] initWithUTF8String:overDose] forKey:@"overDose"];
+            [retval addObject:tablets];
+            //            NSLog(@"%@",[[retval objectAtIndex:0]valueForKey:@"title" ]);
+        }
+        sqlite3_finalize(statement);
+    }
+    return retval;
+}
 @end

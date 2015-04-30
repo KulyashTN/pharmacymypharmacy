@@ -15,5 +15,6 @@
 
 + (DatabaseManager*)database;
 -(NSArray *)findeCity:(NSString*)string;
+-(NSArray *)findeName:(NSString*)string;
 -(void) close;
 @end
