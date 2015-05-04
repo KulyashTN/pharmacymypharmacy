@@ -12,20 +12,24 @@
 	<dict>
 		<key>8098493A28D84DE6DDA82AE7117EC155DCA33809</key>
 		<string>https://github.com/KulyashTN/pharmacymypharmacy.git</string>
+		<key>93F5B767BFEA07E9BE2C6A764DA0A6A1834275DF</key>
+		<string>https://github.com/Kulyash169/MyPharmacy.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MyPharmacy/MyPharmacy.xcodeproj</string>
+	<string>MyPharmacy.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>8098493A28D84DE6DDA82AE7117EC155DCA33809</key>
 		<string>../../..</string>
+		<key>93F5B767BFEA07E9BE2C6A764DA0A6A1834275DF</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/KulyashTN/pharmacymypharmacy.git</string>
+	<string>https://github.com/Kulyash169/MyPharmacy.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>8098493A28D84DE6DDA82AE7117EC155DCA33809</string>
+	<string>93F5B767BFEA07E9BE2C6A764DA0A6A1834275DF</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -34,7 +38,15 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>8098493A28D84DE6DDA82AE7117EC155DCA33809</string>
 			<key>IDESourceControlWCCName</key>
-			<string>pharmacymypharmacy</string>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>93F5B767BFEA07E9BE2C6A764DA0A6A1834275DF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MyPharmacy</string>
 		</dict>
 	</array>
 </dict>

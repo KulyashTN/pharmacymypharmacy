@@ -79,19 +79,32 @@
         NSMutableArray* a = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AlarmTabletArray"]mutableCopy];
         [a removeObjectAtIndex:indexPath.row];
         [[NSUserDefaults standardUserDefaults] setValue:a forKey:@"AlarmTabletArray"];
-        //[self tablets];
         [self.TabletsTableView reloadData]; // tell table to refresh now
+        
+        
+        NSArray *arrayOfLocalNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications] ;
+        
+        for (UILocalNotification *localNotification in arrayOfLocalNotifications) {
+            
+            if ([localNotification.alertBody isEqualToString:[[NSUserDefaults standardUserDefaults]  objectForKey: @"alertBody"]]) {
+                [[UIApplication sharedApplication] cancelLocalNotification:localNotification] ;
+            }
+            
+        }
+    
+    
+    
+    
+    
     }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* cell;
     if([tableView isEqual:self.TabletsTableView]){
-        NSLog(@"t=%@",[self.tablets objectAtIndex:indexPath.row]);
         NSMutableDictionary * dic = [self.tablets objectAtIndex:indexPath.row];
         Tablets* tablet=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         //NSLog(@"dic = %@",dic);
-        NSLog(@"2");
         
         tablet.name.text=[dic objectForKey:@"name"];
         tablet.notes.text = [dic objectForKey:@"notes"];

@@ -151,7 +151,6 @@
 - (IBAction)SaveOrCancelButton:(UIButton *)sender {
     if(sender.tag==0){
         [arrayOfData setObject:self.TimePicker.date forKey:@"date"];
-        NSLog(@"date = %@", [arrayOfData objectForKey:@"date"]);
         
         [arrayOfData setObject:[NSString stringWithFormat:@"%@",self.Name.text] forKey:@"name"];
         //NSLog(@"name = %@", [arrayOfData objectForKey:@"name"]);
@@ -191,9 +190,10 @@
         if (notification) {
             notification.soundName = @"tablet.mp3";
             notification.alertBody = [NSString stringWithFormat:@"Drink it %@. %@",[arrayOfData objectForKey:@"food"], [arrayOfData objectForKey:@"notes"]];
+            [[NSUserDefaults standardUserDefaults] setObject:notification.alertBody forKey:@"alertBody"];
             notification.alertTitle = self.Name.text;
             
-            NSDateFormatter* f = [NSDateFormatter new];
+            NSDateFormatter* f = [ NSDateFormatter new];
             [f setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
             [f setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
             NSDate *dateFromString = [f dateFromString:[f stringFromDate:self.TimePicker.date]];
@@ -201,7 +201,7 @@
             notification.fireDate = dateFromString;
             notification.repeatInterval=NSCalendarUnitWeekday;
             [app scheduleLocalNotification:notification];
-           // NSLog(@"FIRST fireDate=%@",  notification.fireDate);
+            NSLog(@"FIRST fireDate=%@",  notification.fireDate);
 
             NSDateFormatter *weekday = [NSDateFormatter new];
             [weekday setDateFormat: @"EEEE"];
@@ -224,12 +224,14 @@
                 if([[week objectAtIndex:iii] isEqualToString:@"1"]){
                     notification.fireDate = [dateFromString dateByAddingTimeInterval:60*60*24*i];
                     notification.repeatInterval=NSCalendarUnitWeekday;
-                    //NSLog(@"fireDate=%@",  notification.fireDate);
+                    NSLog(@"fireDate=%@",  notification.fireDate);
                     [app scheduleLocalNotification:notification];
+                    [app presentLocalNotificationNow:notification];
+
                 }
                 iii++;
             }
-            
+            [app scheduleLocalNotification:notification];
             [app presentLocalNotificationNow:notification];
 
         }
@@ -259,7 +261,6 @@
     [self.RepeatSwitch resignFirstResponder];
     [self.ViewWithButtons resignFirstResponder];
     [self.FoodControl resignFirstResponder];
-    NSLog(@"eee");
 }
 
 
