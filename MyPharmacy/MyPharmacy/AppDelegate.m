@@ -18,12 +18,6 @@
 //@dynamic databaseURL;
 //@dynamic databaseExists;
 
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-//    [[UIApplication sharedApplication] cancelAllLocalNotifications];
-//    NSLog(@"vldnvm");
-}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     MFSideMenuContainerViewController *container = (MFSideMenuContainerViewController *)self.window.rootViewController;
@@ -51,8 +45,6 @@
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
     
-    
-    
 //    sqlite3 *db;
 //    if (sqlite3_open([[self.databaseURL path] UTF8String], &db) == SQLITE_OK) {
 //        if (sqlite3_exec(db, (const char*) "SELECT count(*) FROM sqlite_master;", NULL, NULL, NULL) == SQLITE_OK) {
@@ -73,7 +65,7 @@
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    NSLog(@"FIRE DATE in app=%@", notification.fireDate);
+    // NSLog(@"FIRE DATE=%@", notification.fireDate);
     
     if(notification.fireDate!=NULL){
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:notification.alertTitle message:notification.alertBody delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -87,6 +79,10 @@
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+}
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.

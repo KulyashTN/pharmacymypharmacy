@@ -10,8 +10,9 @@
 
 @implementation DatabaseManager
 
-#define DB_FILE_NAME @"myDrugsDB"
+//#define DB_FILE_NAME @"myDrugsDB"
 
+#define DB_FILE_NAME @"DrugsDB"
 static DatabaseManager *_database;
 
 + (DatabaseManager*)database {

@@ -22,7 +22,7 @@
 {
     [super viewDidLoad];
     
-    menuItems = @[@"My Pharmacy",@"Add Tablet",@"Notes",@"About us"];
+    menuItems = @[@"My Pharmacy",@"Add Tablet",@"Notes"];
     menuItems1 = @[@"",@"",@"",@""];
     
     self.tableView1.delegate = self;
@@ -89,7 +89,7 @@
             navigationController.viewControllers = controllers;
         }else if (indexPath.row==2)
         {
-            UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"node"];
+            UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"helpInf"];
             NSArray *controllers = [NSArray arrayWithObject:viewController];
             navigationController.viewControllers = controllers;
         }        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];

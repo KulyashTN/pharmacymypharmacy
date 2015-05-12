@@ -18,6 +18,38 @@
 		4E2DF9B21AE55B7100BC88C0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2DF9B11AE55B7100BC88C0 /* libsqlite3.dylib */; };
 		4E46A82F1AD332FC00505B35 /* AddByHandsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E46A82E1AD332FC00505B35 /* AddByHandsViewController.m */; };
 		4E46A8351AD336C500505B35 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E46A8341AD336C400505B35 /* data.plist */; };
+		4E54593C1B01DE2C00BF95AD /* DrugsDB.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4E54593B1B01DE2C00BF95AD /* DrugsDB.sqlite */; };
+		4E5D9F711B01D25D007899B3 /* 26.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F571B01D25D007899B3 /* 26.jpg */; };
+		4E5D9F721B01D25D007899B3 /* 25.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F581B01D25D007899B3 /* 25.jpg */; };
+		4E5D9F731B01D25D007899B3 /* 24.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F591B01D25D007899B3 /* 24.jpg */; };
+		4E5D9F741B01D25D007899B3 /* 23.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F5A1B01D25D007899B3 /* 23.jpg */; };
+		4E5D9F751B01D25D007899B3 /* 22.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F5B1B01D25D007899B3 /* 22.jpg */; };
+		4E5D9F761B01D25D007899B3 /* 21.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F5C1B01D25D007899B3 /* 21.jpg */; };
+		4E5D9F771B01D25D007899B3 /* 20.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F5D1B01D25D007899B3 /* 20.jpg */; };
+		4E5D9F781B01D25D007899B3 /* 19.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F5E1B01D25D007899B3 /* 19.jpg */; };
+		4E5D9F791B01D25D007899B3 /* 18.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F5F1B01D25D007899B3 /* 18.jpg */; };
+		4E5D9F7A1B01D25D007899B3 /* 17.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F601B01D25D007899B3 /* 17.jpg */; };
+		4E5D9F7B1B01D25D007899B3 /* 16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F611B01D25D007899B3 /* 16.jpg */; };
+		4E5D9F7C1B01D25D007899B3 /* 15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F621B01D25D007899B3 /* 15.jpg */; };
+		4E5D9F7D1B01D25D007899B3 /* 14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F631B01D25D007899B3 /* 14.jpg */; };
+		4E5D9F7E1B01D25D007899B3 /* 13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F641B01D25D007899B3 /* 13.jpg */; };
+		4E5D9F7F1B01D25D007899B3 /* 12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F651B01D25D007899B3 /* 12.jpg */; };
+		4E5D9F801B01D25D007899B3 /* 11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F661B01D25D007899B3 /* 11.jpg */; };
+		4E5D9F811B01D25D007899B3 /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F671B01D25D007899B3 /* 10.jpg */; };
+		4E5D9F821B01D25D007899B3 /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F681B01D25D007899B3 /* 9.jpg */; };
+		4E5D9F831B01D25D007899B3 /* 8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F691B01D25D007899B3 /* 8.jpg */; };
+		4E5D9F841B01D25D007899B3 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F6A1B01D25D007899B3 /* 7.jpg */; };
+		4E5D9F851B01D25D007899B3 /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F6B1B01D25D007899B3 /* 6.jpg */; };
+		4E5D9F861B01D25D007899B3 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F6C1B01D25D007899B3 /* 5.jpg */; };
+		4E5D9F871B01D25D007899B3 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F6D1B01D25D007899B3 /* 4.jpg */; };
+		4E5D9F881B01D25D007899B3 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F6E1B01D25D007899B3 /* 3.jpg */; };
+		4E5D9F891B01D25D007899B3 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F6F1B01D25D007899B3 /* 1.jpg */; };
+		4E5D9F8A1B01D25D007899B3 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5D9F701B01D25D007899B3 /* 2.jpg */; };
+		4E5D9F951B01D266007899B3 /* PPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D9F8B1B01D266007899B3 /* PPCollectionViewCell.m */; };
+		4E5D9F961B01D266007899B3 /* subViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D9F8D1B01D266007899B3 /* subViewcontroller.m */; };
+		4E5D9F971B01D266007899B3 /* PPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D9F8E1B01D266007899B3 /* PPViewController.m */; };
+		4E5D9F981B01D266007899B3 /* PPImageScrollingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D9F921B01D266007899B3 /* PPImageScrollingCellView.m */; };
+		4E5D9F991B01D266007899B3 /* PPImageScrollingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D9F931B01D266007899B3 /* PPImageScrollingTableViewCell.m */; };
 		4E793FD71AD3C48700A0453A /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E793FD61AD3C48700A0453A /* TableViewCell.m */; };
 		4E93CF031AD32009005B193D /* MyPharmacyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E93CF021AD32009005B193D /* MyPharmacyTableViewController.m */; };
 		4E97A42C1ACA9D9E00FC9366 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E97A4271ACA9D9E00FC9366 /* MFSideMenuContainerViewController.m */; };
@@ -70,6 +102,43 @@
 		4E46A82D1AD332FC00505B35 /* AddByHandsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddByHandsViewController.h; sourceTree = "<group>"; };
 		4E46A82E1AD332FC00505B35 /* AddByHandsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddByHandsViewController.m; sourceTree = "<group>"; };
 		4E46A8341AD336C400505B35 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
+		4E54593B1B01DE2C00BF95AD /* DrugsDB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = DrugsDB.sqlite; sourceTree = "<group>"; };
+		4E5D9F571B01D25D007899B3 /* 26.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 26.jpg; path = PPImageScrollingTableViewCell/NurbaImg/26.jpg; sourceTree = "<group>"; };
+		4E5D9F581B01D25D007899B3 /* 25.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 25.jpg; path = PPImageScrollingTableViewCell/NurbaImg/25.jpg; sourceTree = "<group>"; };
+		4E5D9F591B01D25D007899B3 /* 24.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 24.jpg; path = PPImageScrollingTableViewCell/NurbaImg/24.jpg; sourceTree = "<group>"; };
+		4E5D9F5A1B01D25D007899B3 /* 23.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 23.jpg; path = PPImageScrollingTableViewCell/NurbaImg/23.jpg; sourceTree = "<group>"; };
+		4E5D9F5B1B01D25D007899B3 /* 22.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 22.jpg; path = PPImageScrollingTableViewCell/NurbaImg/22.jpg; sourceTree = "<group>"; };
+		4E5D9F5C1B01D25D007899B3 /* 21.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 21.jpg; path = PPImageScrollingTableViewCell/NurbaImg/21.jpg; sourceTree = "<group>"; };
+		4E5D9F5D1B01D25D007899B3 /* 20.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 20.jpg; path = PPImageScrollingTableViewCell/NurbaImg/20.jpg; sourceTree = "<group>"; };
+		4E5D9F5E1B01D25D007899B3 /* 19.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 19.jpg; path = PPImageScrollingTableViewCell/NurbaImg/19.jpg; sourceTree = "<group>"; };
+		4E5D9F5F1B01D25D007899B3 /* 18.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 18.jpg; path = PPImageScrollingTableViewCell/NurbaImg/18.jpg; sourceTree = "<group>"; };
+		4E5D9F601B01D25D007899B3 /* 17.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 17.jpg; path = PPImageScrollingTableViewCell/NurbaImg/17.jpg; sourceTree = "<group>"; };
+		4E5D9F611B01D25D007899B3 /* 16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 16.jpg; path = PPImageScrollingTableViewCell/NurbaImg/16.jpg; sourceTree = "<group>"; };
+		4E5D9F621B01D25D007899B3 /* 15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 15.jpg; path = PPImageScrollingTableViewCell/NurbaImg/15.jpg; sourceTree = "<group>"; };
+		4E5D9F631B01D25D007899B3 /* 14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 14.jpg; path = PPImageScrollingTableViewCell/NurbaImg/14.jpg; sourceTree = "<group>"; };
+		4E5D9F641B01D25D007899B3 /* 13.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 13.jpg; path = PPImageScrollingTableViewCell/NurbaImg/13.jpg; sourceTree = "<group>"; };
+		4E5D9F651B01D25D007899B3 /* 12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 12.jpg; path = PPImageScrollingTableViewCell/NurbaImg/12.jpg; sourceTree = "<group>"; };
+		4E5D9F661B01D25D007899B3 /* 11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 11.jpg; path = PPImageScrollingTableViewCell/NurbaImg/11.jpg; sourceTree = "<group>"; };
+		4E5D9F671B01D25D007899B3 /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 10.jpg; path = PPImageScrollingTableViewCell/NurbaImg/10.jpg; sourceTree = "<group>"; };
+		4E5D9F681B01D25D007899B3 /* 9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 9.jpg; path = PPImageScrollingTableViewCell/NurbaImg/9.jpg; sourceTree = "<group>"; };
+		4E5D9F691B01D25D007899B3 /* 8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 8.jpg; path = PPImageScrollingTableViewCell/NurbaImg/8.jpg; sourceTree = "<group>"; };
+		4E5D9F6A1B01D25D007899B3 /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 7.jpg; path = PPImageScrollingTableViewCell/NurbaImg/7.jpg; sourceTree = "<group>"; };
+		4E5D9F6B1B01D25D007899B3 /* 6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 6.jpg; path = PPImageScrollingTableViewCell/NurbaImg/6.jpg; sourceTree = "<group>"; };
+		4E5D9F6C1B01D25D007899B3 /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 5.jpg; path = PPImageScrollingTableViewCell/NurbaImg/5.jpg; sourceTree = "<group>"; };
+		4E5D9F6D1B01D25D007899B3 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 4.jpg; path = PPImageScrollingTableViewCell/NurbaImg/4.jpg; sourceTree = "<group>"; };
+		4E5D9F6E1B01D25D007899B3 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 3.jpg; path = PPImageScrollingTableViewCell/NurbaImg/3.jpg; sourceTree = "<group>"; };
+		4E5D9F6F1B01D25D007899B3 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1.jpg; path = PPImageScrollingTableViewCell/NurbaImg/1.jpg; sourceTree = "<group>"; };
+		4E5D9F701B01D25D007899B3 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 2.jpg; path = PPImageScrollingTableViewCell/NurbaImg/2.jpg; sourceTree = "<group>"; };
+		4E5D9F8B1B01D266007899B3 /* PPCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PPCollectionViewCell.m; path = PPImageScrollingTableViewCell/PPCollectionViewCell.m; sourceTree = "<group>"; };
+		4E5D9F8C1B01D266007899B3 /* PPImageScrollingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PPImageScrollingTableViewCell.h; path = PPImageScrollingTableViewCell/PPImageScrollingTableViewCell.h; sourceTree = "<group>"; };
+		4E5D9F8D1B01D266007899B3 /* subViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = subViewcontroller.m; path = PPImageScrollingTableViewCell/subViewcontroller.m; sourceTree = "<group>"; };
+		4E5D9F8E1B01D266007899B3 /* PPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PPViewController.m; path = PPImageScrollingTableViewCell/PPViewController.m; sourceTree = "<group>"; };
+		4E5D9F8F1B01D266007899B3 /* subViewcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = subViewcontroller.h; path = PPImageScrollingTableViewCell/subViewcontroller.h; sourceTree = "<group>"; };
+		4E5D9F901B01D266007899B3 /* PPCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PPCollectionViewCell.h; path = PPImageScrollingTableViewCell/PPCollectionViewCell.h; sourceTree = "<group>"; };
+		4E5D9F911B01D266007899B3 /* PPImageScrollingCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PPImageScrollingCellView.h; path = PPImageScrollingTableViewCell/PPImageScrollingCellView.h; sourceTree = "<group>"; };
+		4E5D9F921B01D266007899B3 /* PPImageScrollingCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PPImageScrollingCellView.m; path = PPImageScrollingTableViewCell/PPImageScrollingCellView.m; sourceTree = "<group>"; };
+		4E5D9F931B01D266007899B3 /* PPImageScrollingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PPImageScrollingTableViewCell.m; path = PPImageScrollingTableViewCell/PPImageScrollingTableViewCell.m; sourceTree = "<group>"; };
+		4E5D9F941B01D266007899B3 /* PPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PPViewController.h; path = PPImageScrollingTableViewCell/PPViewController.h; sourceTree = "<group>"; };
 		4E793FD51AD3C48700A0453A /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		4E793FD61AD3C48700A0453A /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		4E93CF011AD32009005B193D /* MyPharmacyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPharmacyTableViewController.h; sourceTree = "<group>"; };
@@ -152,16 +221,12 @@
 		321912211A9C79BE002DA0C3 /* MyPharmacy */ = {
 			isa = PBXGroup;
 			children = (
+				4E5D9F291B01C8E8007899B3 /* Nurba */,
 				4E793FD41AD3C42C00A0453A /* leftMenu */,
 				4E93CF001AD31FE3005B193D /* MyPharmacy */,
 				321912261A9C79BE002DA0C3 /* AppDelegate.h */,
 				321912271A9C79BE002DA0C3 /* AppDelegate.m */,
-				B740C5F51ACA6A0D00B46137 /* NewTablet.h */,
-				B740C5F61ACA6A0D00B46137 /* NewTablet.m */,
-				B740C5ED1ACA582900B46137 /* AddTabletViewController.h */,
-				B740C5EE1ACA582A00B46137 /* AddTabletViewController.m */,
-				B740C5F01ACA589F00B46137 /* Tablets.h */,
-				B740C5F11ACA589F00B46137 /* Tablets.m */,
+				4E0764421AF2A27000D75C71 /* Kulya */,
 				3219122F1A9C79BE002DA0C3 /* Images.xcassets */,
 				321912311A9C79BE002DA0C3 /* LaunchScreen.xib */,
 				321912221A9C79BE002DA0C3 /* Supporting Files */,
@@ -198,14 +263,79 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4E0764421AF2A27000D75C71 /* Kulya */ = {
+			isa = PBXGroup;
+			children = (
+				B740C5F51ACA6A0D00B46137 /* NewTablet.h */,
+				B740C5F61ACA6A0D00B46137 /* NewTablet.m */,
+				B740C5ED1ACA582900B46137 /* AddTabletViewController.h */,
+				B740C5EE1ACA582A00B46137 /* AddTabletViewController.m */,
+				B740C5F01ACA589F00B46137 /* Tablets.h */,
+				B740C5F11ACA589F00B46137 /* Tablets.m */,
+			);
+			name = Kulya;
+			sourceTree = "<group>";
+		};
 		4E2DF9B31AE55BE800BC88C0 /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				4E54593B1B01DE2C00BF95AD /* DrugsDB.sqlite */,
 				4EF9E1321AE57F410008CA8A /* DatabaseManager.m */,
 				4EF9E1371AE5822B0008CA8A /* myDrugsDB.sqlite */,
 				4EF9E1331AE57F410008CA8A /* DatabaseManager.h */,
 			);
 			name = DB;
+			sourceTree = "<group>";
+		};
+		4E5D9F291B01C8E8007899B3 /* Nurba */ = {
+			isa = PBXGroup;
+			children = (
+				4E5D9F8B1B01D266007899B3 /* PPCollectionViewCell.m */,
+				4E5D9F8C1B01D266007899B3 /* PPImageScrollingTableViewCell.h */,
+				4E5D9F8D1B01D266007899B3 /* subViewcontroller.m */,
+				4E5D9F8E1B01D266007899B3 /* PPViewController.m */,
+				4E5D9F8F1B01D266007899B3 /* subViewcontroller.h */,
+				4E5D9F901B01D266007899B3 /* PPCollectionViewCell.h */,
+				4E5D9F911B01D266007899B3 /* PPImageScrollingCellView.h */,
+				4E5D9F921B01D266007899B3 /* PPImageScrollingCellView.m */,
+				4E5D9F931B01D266007899B3 /* PPImageScrollingTableViewCell.m */,
+				4E5D9F941B01D266007899B3 /* PPViewController.h */,
+				4E5D9F561B01D251007899B3 /* img */,
+			);
+			name = Nurba;
+			sourceTree = "<group>";
+		};
+		4E5D9F561B01D251007899B3 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				4E5D9F571B01D25D007899B3 /* 26.jpg */,
+				4E5D9F581B01D25D007899B3 /* 25.jpg */,
+				4E5D9F591B01D25D007899B3 /* 24.jpg */,
+				4E5D9F5A1B01D25D007899B3 /* 23.jpg */,
+				4E5D9F5B1B01D25D007899B3 /* 22.jpg */,
+				4E5D9F5C1B01D25D007899B3 /* 21.jpg */,
+				4E5D9F5D1B01D25D007899B3 /* 20.jpg */,
+				4E5D9F5E1B01D25D007899B3 /* 19.jpg */,
+				4E5D9F5F1B01D25D007899B3 /* 18.jpg */,
+				4E5D9F601B01D25D007899B3 /* 17.jpg */,
+				4E5D9F611B01D25D007899B3 /* 16.jpg */,
+				4E5D9F621B01D25D007899B3 /* 15.jpg */,
+				4E5D9F631B01D25D007899B3 /* 14.jpg */,
+				4E5D9F641B01D25D007899B3 /* 13.jpg */,
+				4E5D9F651B01D25D007899B3 /* 12.jpg */,
+				4E5D9F661B01D25D007899B3 /* 11.jpg */,
+				4E5D9F671B01D25D007899B3 /* 10.jpg */,
+				4E5D9F681B01D25D007899B3 /* 9.jpg */,
+				4E5D9F691B01D25D007899B3 /* 8.jpg */,
+				4E5D9F6A1B01D25D007899B3 /* 7.jpg */,
+				4E5D9F6B1B01D25D007899B3 /* 6.jpg */,
+				4E5D9F6C1B01D25D007899B3 /* 5.jpg */,
+				4E5D9F6D1B01D25D007899B3 /* 4.jpg */,
+				4E5D9F6E1B01D25D007899B3 /* 3.jpg */,
+				4E5D9F6F1B01D25D007899B3 /* 1.jpg */,
+				4E5D9F701B01D25D007899B3 /* 2.jpg */,
+			);
+			name = img;
 			sourceTree = "<group>";
 		};
 		4E793FD41AD3C42C00A0453A /* leftMenu */ = {
@@ -225,10 +355,10 @@
 		4E93CF001AD31FE3005B193D /* MyPharmacy */ = {
 			isa = PBXGroup;
 			children = (
-				4E07643F1AF285A000D75C71 /* UIBorderLabel.h */,
-				4E0764401AF285A000D75C71 /* UIBorderLabel.m */,
 				4E2DF9B31AE55BE800BC88C0 /* DB */,
 				4EFDC9A71AE3E03C00792721 /* barcode */,
+				4E07643F1AF285A000D75C71 /* UIBorderLabel.h */,
+				4E0764401AF285A000D75C71 /* UIBorderLabel.m */,
 				4E93CF011AD32009005B193D /* MyPharmacyTableViewController.h */,
 				4E93CF021AD32009005B193D /* MyPharmacyTableViewController.m */,
 				4E46A82D1AD332FC00505B35 /* AddByHandsViewController.h */,
@@ -357,12 +487,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E5D9F7A1B01D25D007899B3 /* 17.jpg in Resources */,
+				4E5D9F761B01D25D007899B3 /* 21.jpg in Resources */,
 				4EF9E1381AE5822B0008CA8A /* myDrugsDB.sqlite in Resources */,
+				4E5D9F821B01D25D007899B3 /* 9.jpg in Resources */,
 				B7727DF41AE501AB00DF77D8 /* Icon.png in Resources */,
 				B740C5F41ACA643600B46137 /* 1.png in Resources */,
+				4E5D9F721B01D25D007899B3 /* 25.jpg in Resources */,
+				4E5D9F7C1B01D25D007899B3 /* 15.jpg in Resources */,
+				4E5D9F741B01D25D007899B3 /* 23.jpg in Resources */,
+				4E5D9F7F1B01D25D007899B3 /* 12.jpg in Resources */,
 				321912331A9C79BE002DA0C3 /* LaunchScreen.xib in Resources */,
+				4E5D9F771B01D25D007899B3 /* 20.jpg in Resources */,
+				4E5D9F7D1B01D25D007899B3 /* 14.jpg in Resources */,
+				4E5D9F731B01D25D007899B3 /* 24.jpg in Resources */,
+				4E5D9F851B01D25D007899B3 /* 6.jpg in Resources */,
 				321912301A9C79BE002DA0C3 /* Images.xcassets in Resources */,
+				4E5D9F7E1B01D25D007899B3 /* 13.jpg in Resources */,
+				4E5D9F881B01D25D007899B3 /* 3.jpg in Resources */,
+				4E5D9F8A1B01D25D007899B3 /* 2.jpg in Resources */,
+				4E54593C1B01DE2C00BF95AD /* DrugsDB.sqlite in Resources */,
+				4E5D9F801B01D25D007899B3 /* 11.jpg in Resources */,
+				4E5D9F871B01D25D007899B3 /* 4.jpg in Resources */,
+				4E5D9F781B01D25D007899B3 /* 19.jpg in Resources */,
+				4E5D9F861B01D25D007899B3 /* 5.jpg in Resources */,
+				4E5D9F831B01D25D007899B3 /* 8.jpg in Resources */,
+				4E5D9F711B01D25D007899B3 /* 26.jpg in Resources */,
+				4E5D9F751B01D25D007899B3 /* 22.jpg in Resources */,
 				4E46A8351AD336C500505B35 /* data.plist in Resources */,
+				4E5D9F791B01D25D007899B3 /* 18.jpg in Resources */,
+				4E5D9F7B1B01D25D007899B3 /* 16.jpg in Resources */,
+				4E5D9F891B01D25D007899B3 /* 1.jpg in Resources */,
+				4E5D9F841B01D25D007899B3 /* 7.jpg in Resources */,
+				4E5D9F811B01D25D007899B3 /* 10.jpg in Resources */,
 				4E21D6501ACB21910007A9DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,19 +539,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				B740C5EF1ACA582A00B46137 /* AddTabletViewController.m in Sources */,
+				4E5D9F991B01D266007899B3 /* PPImageScrollingTableViewCell.m in Sources */,
 				B740C5F21ACA589F00B46137 /* Tablets.m in Sources */,
 				3219122B1A9C79BE002DA0C3 /* ViewController.m in Sources */,
 				4E46A82F1AD332FC00505B35 /* AddByHandsViewController.m in Sources */,
 				4EFDC9B21AE3E0E600792721 /* Barcode.m in Sources */,
 				4EFDC9AC1AE3E08F00792721 /* ScannerViewController.m in Sources */,
 				321912281A9C79BE002DA0C3 /* AppDelegate.m in Sources */,
+				4E5D9F971B01D266007899B3 /* PPViewController.m in Sources */,
+				4E5D9F961B01D266007899B3 /* subViewcontroller.m in Sources */,
 				4E93CF031AD32009005B193D /* MyPharmacyTableViewController.m in Sources */,
 				B740C5F71ACA6A0D00B46137 /* NewTablet.m in Sources */,
 				4E793FD71AD3C48700A0453A /* TableViewCell.m in Sources */,
+				4E5D9F981B01D266007899B3 /* PPImageScrollingCellView.m in Sources */,
 				321912251A9C79BE002DA0C3 /* main.m in Sources */,
 				4E97A4311ACA9E7400FC9366 /* MenuViewController.m in Sources */,
 				4E0764411AF285A000D75C71 /* UIBorderLabel.m in Sources */,
 				4E97A42D1ACA9D9E00FC9366 /* MFSideMenuShadow.m in Sources */,
+				4E5D9F951B01D266007899B3 /* PPCollectionViewCell.m in Sources */,
 				4E97A42C1ACA9D9E00FC9366 /* MFSideMenuContainerViewController.m in Sources */,
 				4E97A4341ACA9ECB00FC9366 /* ViewCell1.m in Sources */,
 				4EF9E1341AE57F410008CA8A /* DatabaseManager.m in Sources */,

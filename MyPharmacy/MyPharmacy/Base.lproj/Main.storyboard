@@ -13,6 +13,69 @@
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="6I2-kw-lSa">
+            <objects>
+                <tableViewController restorationIdentifier="helpInf" storyboardIdentifier="helpInf" id="vcb-gK-jk6" customClass="PPViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="c6a-4c-afH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="zW8-ym-2Zk" customClass="PPImageScrollingTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zW8-ym-2Zk" id="mxz-Pq-gxW">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="sx0-lw-QYS" kind="show" identifier="tosubview" id="q72-C7-FIR"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vcb-gK-jk6" id="ihl-3G-WG2"/>
+                            <outlet property="delegate" destination="vcb-gK-jk6" id="5Hp-BL-sLy"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CVX-u3-AyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11" y="-1186"/>
+        </scene>
+        <!--Sub Viewcontroller-->
+        <scene sceneID="TDv-aG-4eG">
+            <objects>
+                <viewController storyboardIdentifier="subViewcontroller" id="sx0-lw-QYS" customClass="subViewcontroller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2PY-yy-PlG"/>
+                        <viewControllerLayoutGuide type="bottom" id="gwe-p9-HSJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wkf-G4-Yga">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jS4-Am-GO6">
+                                <rect key="frame" x="0.0" y="64" width="320" height="245"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ef7-OQ-Jrn">
+                                <rect key="frame" x="0.0" y="309" width="320" height="259"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="subViewImageView" destination="jS4-Am-GO6" id="GIW-E3-CTZ"/>
+                        <outlet property="subViewTextView" destination="ef7-OQ-Jrn" id="cpe-ah-9AW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ksa-1F-J5q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="567" y="-1160"/>
+        </scene>
         <!--Side Menu Container View Controller-->
         <scene sceneID="5nx-bY-crk">
             <objects>
@@ -29,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Lv-LM-MdK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="603" y="-1202"/>
+            <point key="canvasLocation" x="-1385" y="-1954"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7n1-fu-yEO">
@@ -89,6 +152,9 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="vcb-gK-jk6" kind="show" id="V9x-pc-OFG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -323,7 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ni-d8-fRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-921" y="-1178"/>
+            <point key="canvasLocation" x="-1385" y="-1194"/>
         </scene>
         <!--Title-->
         <scene sceneID="ozT-tr-aW7">
@@ -408,7 +474,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RJr-zK-Cdx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-44" y="-463"/>
+            <point key="canvasLocation" x="-23" y="-406"/>
         </scene>
         <!--My Pharmacy-->
         <scene sceneID="zhH-Cw-1vD">
@@ -495,7 +561,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESO-Fa-YCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-426" y="227"/>
+            <point key="canvasLocation" x="-383" y="376"/>
         </scene>
         <!--New Tablet-->
         <scene sceneID="93p-i1-bTv">
@@ -706,8 +772,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ozn-rn-4Sq"/>
-        <segue reference="vnP-wB-jwg"/>
-        <segue reference="X5o-2k-BeN"/>
+        <segue reference="BJg-zv-lfc"/>
         <segue reference="Qtd-yN-E7i"/>
+        <segue reference="vnP-wB-jwg"/>
     </inferredMetricsTieBreakers>
 </document>
